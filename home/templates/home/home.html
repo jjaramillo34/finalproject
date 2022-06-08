@@ -1,0 +1,44 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+<div class="text-center">
+    <h2>Bienvenido {{ user.username }}</h2>
+    <h3><a style="color: rgb(3, 36, 184)" href="{% url 'user:avatar-load' %}">Cambiar Avatar</a></h3>
+    <img height="160px" src="{{url}}" alt="">
+</div>
+{% endif %}
+<h2>Search this Blog</h2>
+<hr>
+</hr>
+
+<form action="/search" method="GET">
+<div class="main">
+    <!-- Another variation with a button -->
+    <div class="input-group">
+        <input type="text" name="search_param" id="course_code_or_name" class="form-control" placeholder="Search this blog"
+        {% if search_param %} value="{{ search_param }}" {% endif %}>
+        <div class="input-group-append">
+        <button class="btn btn-secondary" type="button">
+            <i class="fa fa-search"></i>
+        </button>
+        <a style="color: blue" href="{% url 'home:main' %}"><i class="fa fa-undo"></i></a>
+        </div>
+    </div>
+</div>
+</form>
+
+<hr>
+</hr>
+
+{% if courses %}
+<ul>
+    {% for course in courses %}
+    <li>
+        Curso: {{course.name}}
+        -- Camada: {{course.code}}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock content %}

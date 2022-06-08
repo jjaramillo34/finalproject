@@ -83,7 +83,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'coderhouse_project.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 

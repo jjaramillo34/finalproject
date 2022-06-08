@@ -16,7 +16,7 @@ def index(request):
     return render(
         request=request,
         context=context_dict,
-        template_name="home/main.html"
+        template_name="home/home.html"
     )
 
 
@@ -42,5 +42,5 @@ def search(request):
     return render(
         request=request,
         context=context_dict,
-        template_name="home/main.html",
+        template_name="home/home.html",
     )
