@@ -1,160 +1,98 @@
-# Instrucciones para ejecutar este proyecto
+<div align="center" id="top"> 
+  <img src="./.github/app.gif" alt="Django Coderhouse Project" />
 
-- Clonar el proyecto y cambiar de rama
-```bash
-git clone https://github.com/coder-live-class/django-coderhouse-project.git
+  &#xa0;
 
-cd django-coderhouse-project
+  <!-- <a href="https://djangocoderhouseproject.netlify.app">Demo</a> -->
+</div>
 
-git checkout class_25
+<h1 align="center">Django Coderhouse Project</h1>
 
-```
+<p align="center">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/{{YOUR_GITHUB_USERNAME}}/django-coderhouse-project?color=56BEB8">
 
-- Crear y activar entorno virtual (Windows)
-```bash
-C:\>python -m venv c:\ruta\al\entorno\virtual
-C:\>c:\ruta\al\entorno\virtual\scripts\activate.bat
-```
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/{{YOUR_GITHUB_USERNAME}}/django-coderhouse-project?color=56BEB8">
 
-- Crear y activar entorno virtual (Linux)
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/{{YOUR_GITHUB_USERNAME}}/django-coderhouse-project?color=56BEB8">
 
-- Crear y activar entorno virtual (Linux)
-```bash
-export SECRET_KEY='4e8&y0ygfox1cg7f3owcku9$hv_(nu7t3ku$p637-+!so2jlvs'
-export DEBUG='True'
-export ALLOWED_HOSTS='*,'
-```
-o crear el archivo `coderhouse_project/.env` con el siguente contenido
-```text
-SECRET_KEY=4e8&y0ygfox1cg7f3owcku9$hv_(nu7t3ku$p637-+!so2jlvs
-DEBUG=True
-ALLOWED_HOSTS=*,
-```
+  <img alt="License" src="https://img.shields.io/github/license/{{YOUR_GITHUB_USERNAME}}/django-coderhouse-project?color=56BEB8">
 
-- Instalar las dependencias del proyecto
-```bash
+  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/{{YOUR_GITHUB_USERNAME}}/django-coderhouse-project?color=56BEB8" /> -->
 
-pip install -r requirements.txt
-```
+  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/{{YOUR_GITHUB_USERNAME}}/django-coderhouse-project?color=56BEB8" /> -->
 
-- Crear base de datos a partir de las migraciones
-```bash
-python manage.py migrate
-```
+  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/{{YOUR_GITHUB_USERNAME}}/django-coderhouse-project?color=56BEB8" /> -->
+</p>
 
-- Crear super-usuario
-```bash
-python manage.py createsuperuser
-```
+<!-- Status -->
 
+<!-- <h4 align="center"> 
+	🚧  Django Coderhouse Project 🚀 Under construction...  🚧
+</h4> 
 
-- Crear estáticos
-```bash
-python manage.py collectstatic
-```
+<hr> -->
 
-- Ejecutar proyecto
-```bash
-python manage.py runserver
-```
-# Comandos útiles para Django
+<p align="center">
+  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
+  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
+  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
+  <a href="#memo-license">License</a> &#xa0; | &#xa0;
+  <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">Author</a>
+</p>
 
-## Crear proyecto
-```bash
-django-admin startproject <nombre del proyecto>
-cd <nombre del proyecto>
-```
-## Crear aplicación a un proyecto
-```bash
-python manage.py startapp <nombre del app>
-```
-# Comandos básicos para Git
+<br>
 
-## Git clone
-Git clone es un comando para descargarte el código fuente existente desde un repositorio remoto (como Github, por ejemplo). Descarga la última versión de tu proyecto en un repositorio y la guarda en tu ordenador
-```bash
-git clone <https://link-con-nombre-del-repositorio>
-```
+## :dart: About ##
 
-## Git branch
-- Creando una nueva rama:
-```bash
-git branch <nombre-de-la-rama>
+Describe your project
 
-```
-- Visualización de ramas:
-```bash
-git branch
-git branch --list
-```
-- Borrar una rama:
-```bash
-git branch -d <nombre-de-la-rama>
-```
+## :sparkles: Features ##
 
-## Git checkout
-- Para cambiarte a una rama existente
-```bash
-git checkout <nombre-de-la-rama>
-```
-- Para crear y cambiarte a esa rama al mismo tiempo
-```bash
-git checkout -b <nombre-de-tu-rama>
+:heavy_check_mark: Feature 1;\
+:heavy_check_mark: Feature 2;\
+:heavy_check_mark: Feature 3;
 
-```
+## :rocket: Technologies ##
 
-## Git status
-El comando de git status nos da toda la información necesaria sobre la rama actual:
-- Si la rama actual está actualizada
-- Si hay algo para confirmar, enviar o recibir (pull).
-- Si hay archivos en preparación (staged), sin preparación(unstaged) o que no están recibiendo seguimiento (untracked)
-- Si hay archivos creados, modificados o eliminadosstatus
-```bash
-git status
-```
+The following tools were used in this project:
 
-## Git add
-- Añadir un único archivo:
-```bash
-git add <archivo>
-```
+- [Expo](https://expo.io/)
+- [Node.js](https://nodejs.org/en/)
+- [React](https://pt-br.reactjs.org/)
+- [React Native](https://reactnative.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
 
-- Añadir todo de una vez:
-```bash
-git add -A
-git add .
-```
-***Importante: El comando ``git add`` almacena en el ``stage`` los cambios de los archivos sin embargo aún no quedan registrados en el repositorio hasta que se utilice el comando de confirmación ``git commit`` para registrar un punto de control de los cambios.***
+## :white_check_mark: Requirements ##
 
-## Git commit
-Git commit establece un punto de control al cual puedes volver más tarde si es necesario.
-Resulta muy aconsejable escribir un mensaje corto para explicar qué hemos desarrollado o modificado en el código fuente.
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+
+## :checkered_flag: Starting ##
 
 ```bash
-git commit -m "mensaje de confirmación"
+# Clone this project
+$ git clone https://github.com/{{YOUR_GITHUB_USERNAME}}/django-coderhouse-project
+
+# Access
+$ cd django-coderhouse-project
+
+# Install dependencies
+$ yarn
+
+# Run the project
+$ yarn start
+
+# The server will initialize in the <http://localhost:3000>
 ```
 
-## Git push
-Después de haber confirmado tus cambios, el siguiente paso que quieres dar es enviar tus cambios al servidor remoto. Git push envía tus commits al repositorio remoto.
-```bash
-git push <nombre-remoto> <nombre-de-tu-rama>
-git push origin <nombre-de-tu-rama>
-```
-***Importante: Git push solamente carga los cambios que han sido confirmados con un ``git commit``.***
+## :memo: License ##
 
-## Git pull
-El comando git pull se utiliza para recibir actualizaciones del repositorio remoto.
-```bash
-git pull <nombre-remoto> <nombre-de-tu-rama>
-git pull origin master
-```
-## Git remote
-Sirve para cambiar la dirección url del repositorio que tenemos por origin.
-```bash
-git remote set-url origin <url_de_tu_repositorio_en_GitHub>
-git remote set-url origin https://github.com/coder-live-class/django-coderhouse-project.git
-```
+This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
+
+
+Made with :heart: by <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">{{YOUR_NAME}}</a>
+
+&#xa0;
+
+<a href="#top">Back to top</a>
