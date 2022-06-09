@@ -44,12 +44,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'course',
     'home',
     'homework',
     'profesor',
     'student',
     'user',
+    # more apps
+    'blog',
+    'about',
+    'ckeditor',
+    'ckeditor_uploader',
+    'comment',
+    
 ]
 
 MIDDLEWARE = [
@@ -146,6 +154,7 @@ LOGIN_URL = '/user/login'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 # Heroku configs
 django_heroku.settings(locals())

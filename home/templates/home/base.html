@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Clean Blog - Start Bootstrap Theme</title>
+        <title>{% block title %}{{ settings.APP_NAME }}{% endblock %}</title>
         <link rel="icon" type="image/x-icon" href="{% static 'home/assets/favicon.ico' %}" />
         
         {% block stylesheets %}
@@ -22,9 +22,7 @@
     <body>
         {% include "home/navbar.html" %}
 
-        <!-- Includes -->
-        {% include "home/header.html" %}
-        
+        {% block header %}{% endblock header %}
         <!-- Main Content-->
         {% block content %}{% endblock content %}
 
