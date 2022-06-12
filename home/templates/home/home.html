@@ -9,14 +9,16 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>{{ header }}</h1>
-                    <span class="subheading">{{ header }}</span>
+                    <span class="subheading">{{ subheader }}</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 {% endblock header %}
+
 {% block content %}
+
 {% if user.is_authenticated %}
 <div class="text-center">
     <h2>Bienvenido {{ user.username }}</h2>
@@ -88,3 +90,20 @@
 {% endif %}
 
 {% endblock content %}
+
+{% block extrascripts %}
+  <script type="text/javascript">
+      $(function () {
+          // Login
+          $("#login-btn").modalForm({
+            formURL: "{% url 'login' %}"
+          });
+
+          //  Signup
+          $("#signup-btn").modalForm({
+            formURL: "{% url 'user:signup' %}"
+          });
+      });
+  </script>
+{% endblock extrascripts %}
+

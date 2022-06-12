@@ -1,6 +1,7 @@
 {% load static %}
 <!-- Navigation-->
-
+{% csrf_token %}
+{% include "user/_modal.html" %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-0 py-3">
     <div class="container-xl">
       <!-- Logo -->
@@ -17,19 +18,51 @@
         <div class="navbar-nav mx-lg-auto">
           <a class="nav-item nav-link active" href="#" aria-current="page">Home</a>
           <a class="nav-item nav-link" href="blog:home">Blog</a>
-          <a class="nav-item nav-link" href="#">Features</a>
-          <a class="nav-item nav-link" href="#">Pricing</a>
+          <a class="nav-item nav-link" href="#">About</a>
+          <a class="nav-item nav-link" href="#">Contact</a>
         </div>
         <!-- Right navigation -->
         <div class="navbar-nav ms-lg-4">
-          <a class="nav-item nav-link" href="#">Sign in</a>
+          <div class="row">
+            <div class="col-12 mb-3">
+              {% if not user.is_anonymous %}
+                <span>
+                  Your are logged in as
+                  <strong>{{ user }}</strong>.
+                </span>
+                <a href="{% url 'user:user-logout' %}" id="logout-btn" class="btn btn-danger" role="button">Log out</a>
+              {% else %}
+                <button id="login-btn" class="btn btn-primary" type="button" name="button">Log in</button>
+              {% endif %}
+            </div>
         </div>
         <!-- Action -->
         <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
-          <a href="#" class="btn btn-sm btn-primary w-full w-lg-auto">
-            Register
-          </a>
+          <div class="row">
+            <div class="col-12 mb-3">
+              <button id="signup-btn" class="btn btn-primary" type="button" name="button">Sign up</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </nav>
+
+
+  {% block extrascripts %}
+  <script type="text/javascript">
+      $(function () {
+          // Login
+          $("#login-btn").modalForm({
+            formURL: "{% url 'user:login' %}"
+          });
+
+          //  Signup
+          $("#signup-btn").modalForm({
+            formURL: "{% url 'user:signup' %}"
+          });
+
+          
+      });
+  </script>
+{% endblock extrascripts %}

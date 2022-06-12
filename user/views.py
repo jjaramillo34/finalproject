@@ -7,10 +7,26 @@ from django.contrib.auth.decorators import login_required
 from django.forms.models import model_to_dict
 from django.shortcuts import redirect, render
 
-
-from user.forms import UserRegisterForm, UserEditForm, AvatarForm
+from user.forms import CustomAuthenticationForm, CustomUserCreationForm, UserRegisterForm, UserEditForm, AvatarForm
 from user.models import Avatar
+from django.urls import reverse_lazy
 
+from bootstrap_modal_forms.generic import (
+    BSModalLoginView,
+    BSModalCreateView
+)
+
+class SignUpView(BSModalCreateView):
+    form_class = CustomUserCreationForm
+    template_name = 'user/signup.html'
+    success_message = 'Success: Sign up succeeded. You can now Log in.'
+    success_url = reverse_lazy('blog:home')
+
+class CustomLoginView(BSModalLoginView):
+    authentication_form = CustomAuthenticationForm
+    template_name = 'user/login.html'
+    success_message = 'Success: You were successfully logged in.'
+    success_url = reverse_lazy('blog:home')
 
 def register(request):
     if request.method == 'POST':
@@ -54,7 +70,7 @@ def login_request(request):
 
 def logout_request(request):
       logout(request)
-      return redirect("user:user-login")
+      return redirect("blog:home")
 
 
 @login_required

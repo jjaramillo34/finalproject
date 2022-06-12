@@ -1,0 +1,35 @@
+{% load crispy_forms_tags %}
+
+<form action="post" novalidate class="form-block">
+    {% csrf_token %}
+    {% if new_comment %}
+    <div class="alert alert-success" role="alert">
+        Your comment is awaiting moderation
+    </div>
+    {% else %}
+    <h3>Leave a comment</h3>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group fl_icon">
+                <div class="icon"><i class="fa fa-user"></i></div>
+                {{ form.name|as_crispy_field }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 fl_icon">
+            <div class="form-group fl_icon">
+                <div class="icon"><i class="fa fa-envelope-o"></i></div>
+                {{ form.email|as_crispy_field }}
+            </div>
+        </div>
+        <div class="col-xs-12">									
+            <div class="form-group">
+                {{ form.body|as_crispy_field }}
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+        
+    </div>
+    
+    {% endif %}
+</form>
