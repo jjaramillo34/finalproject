@@ -1,6 +1,24 @@
 {% extends "home/base.html" %}
 {% load static %}
+{% load humanize %}
+{% block header %}
+<!-- Page Header-->
+<header class="masthead" style='background-image: url("{% static 'home/assets/img/home-bg.jpg' %}")'>
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>{{ header }}</h1>
+                    <span class="subheading">{{ subheader }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock header %}
+
 {% block content %}
+
 {% if user.is_authenticated %}
 <div class="text-center">
     <h2>Bienvenido {{ user.username }}</h2>
@@ -22,7 +40,7 @@
         <button class="btn btn-secondary" type="button">
             <i class="fa fa-search"></i>
         </button>
-        <a style="color: blue" href="{% url 'home:main' %}"><i class="fa fa-undo"></i></a>
+        <a style="color: blue" href="{% url 'blog:home' %}"><i class="fa fa-undo"></i></a>
         </div>
     </div>
 </div>
@@ -31,14 +49,61 @@
 <hr>
 </hr>
 
-{% if courses %}
-<ul>
-    {% for course in courses %}
-    <li>
-        Curso: {{course.name}}
-        -- Camada: {{course.code}}
-    </li>
-    {% endfor %}
-</ul>
+{% if post_list %}
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <!-- Post preview-->
+            {% for post in post_list %}
+            <div class="post-preview">
+                <a href="{% url 'blog:post_detail' post.slug  %}">
+                    <h2 class="post-title">{{ post.title }}</h2>
+                    <h3 class="post-subtitle">{{ post.title_short }}</h3>
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <a href="#!">{{ post.author }}</a>
+                    on {{ post.created_on}}
+                    <small>{{ post.created_on|naturaltime }}</small>
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endif %}
+
+{% if post_list.has_other_pages %}
+  <nav aria-label="Page navigation conatiner"></nav>
+  <ul class="pagination justify-content-center">
+    {% if post_list.has_previous %}
+    <li><a href="?page={{ post_list.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+    {% endif %}
+    {% if post_list.has_next %}
+    <li><a href="?page={{ post_list.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+   {% endif %}
+  </ul>
+  </nav>
+</div>
+{% endif %}
+
 {% endblock content %}
+
+{% block extrascripts %}
+  <script type="text/javascript">
+      $(function () {
+          // Login
+          $("#login-btn").modalForm({
+            formURL: "{% url 'login' %}"
+          });
+
+          //  Signup
+          $("#signup-btn").modalForm({
+            formURL: "{% url 'user:signup' %}"
+          });
+      });
+  </script>
+{% endblock extrascripts %}
+

@@ -44,12 +44,24 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'course',
     'home',
     'homework',
     'profesor',
     'student',
     'user',
+    # more apps
+    'blog',
+    'about',
+    'comment',
+    #third party apps
+    'ckeditor',
+    'ckeditor_uploader',
+    "crispy_forms",
+    "crispy_bootstrap5",
+    "widget_tweaks",
+    
 ]
 
 MIDDLEWARE = [
@@ -146,6 +158,11 @@ LOGIN_URL = '/user/login'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # Heroku configs
 django_heroku.settings(locals())

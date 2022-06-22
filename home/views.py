@@ -1,16 +1,21 @@
 from django.shortcuts import render
 from django.db.models import Q
 
+from blog.models import Post
 from course.models import Course
 from user.models import Avatar
 
 
 def index(request):
+    header = "Clean Blog"
+    subheader = "A Blog Theme by Start Bootstrap"
     avatar_ctx = get_avatar_url_ctx(request)
-    context_dict = {**avatar_ctx}
-    courses = Course.objects.all()
+    context_dict = {**avatar_ctx, 'header': header, 'subheader': subheader }
+    #courses = Course.objects.all()
+    blogs = Post.objects.all()
     context_dict.update({
-        'courses': courses,
+        'blogs': blogs,
+        
     })
     print('context_dict: ', context_dict)
     return render(

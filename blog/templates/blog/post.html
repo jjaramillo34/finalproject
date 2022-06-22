@@ -1,0 +1,149 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% load humanize %}
+{% load crispy_forms_tags %}
+{% block header %}
+<!-- Includes -->
+<header class="masthead" style='background-image: url("{% static 'home/assets/img/post-bg.jpg' %}")'>
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1>{{ post.title }}</h1>
+                    <h2 class="subheading">{{ post.title_short }}</h2>
+                    <span class="post-meta">
+                        Posted by
+                        <a href="#!">{{ post.author }}</a>
+                        on {{ post.created_on}}
+                        <small>{{ post.created_on|naturaltime }}</small>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock header %}
+<!-- Post Content-->
+{% block content %}
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <p>{{ post.body|safe }}</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <div class="col-md-8 card mb-4  mt-3 ">
+            <div class="card-body">
+              <!-- comments -->
+              <h2>{{ comments.count }} comments</h2>
+              {% for comment in comments %}
+              <div class="comments" style="padding: 10px;">
+                <p class="font-weight-bold">
+                  {{ comment.name }}
+                  <span class=" text-muted font-weight-normal">
+                    {{ comment.created_on }}
+                  </span>
+                </p>
+                {{ comment.body | linebreaks }}
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="col-md-8 card mb-4  mt-3 ">
+            <div class="card-body">
+              {% if new_comment %}
+              <div class="alert alert-success" role="alert">
+                Your comment is awaiting moderation
+              </div>
+              {% else %}
+              <h3>Leave a comment</h3>
+              <form method="post" style="margin-top: 1.3em;">
+                {{ comment_form.as_p }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+              </form>
+              {% endif %}
+            </div>
+        </div>
+        <div class="container">
+            <div class="be-comment-block">
+                <h1 class="comments-title">Comments ({{ comments.count }})</h1>
+                {% for comment in comments %}
+                <div class="be-comment">
+                    <div class="be-img-comment">	
+                        <a href="blog-detail-2.html">
+                            <img src="https://cdn.vectorstock.com/i/1000x1000/51/99/icon-of-user-avatar-for-web-site-or-mobile-app-vector-3125199.webp" alt="" class="be-ava-comment">
+                        </a>
+                    </div>
+                    <div class="be-comment-content">
+                        
+                            <span class="be-comment-name">
+                                <a href="blog-detail-2.html">{{ comment.name }}</a>
+                                </span>
+                            <span class="be-comment-time">
+                                <i class="fa fa-clock-o"></i>
+                                {{ comment.created_on }}
+                            </span>
+            
+                        <p class="be-comment-text">
+                            {{ comment.body }}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            </div>
+            <div class="col-md-8 card mb-4  mt-3 ">
+                <div class="card-body">
+                  {% if new_comment %}
+                  <div class="alert alert-success" role="alert">
+                    Your comment is awaiting moderation
+                  </div>
+                  {% else %}
+                  <h3>Leave a comment</h3>
+                  <form method="post" class="form-block">
+                    {% csrf_token %}
+                    {{ comment_form.non_field_errors }}
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group fl_icon">
+                                {{ comment_form.name.errors }}
+                                <div class="icon"><i class="fa fa-user"></i></div>
+                                <label for="{{ comment_form.name.id_for_label }}">Name</label>
+                                {{ comment_form.name }}
+                                {% if comment_form.name.help_text %}
+                                <p class="help">{{ comment_form.name.help_text|safe }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 fl_icon">
+                            <div class="form-group fl_icon">
+                                {{ comment_form.email.errors }}
+                                <div class="icon"><i class="fa fa-envelope"></i></div>
+                                <label for="{{ comment_form.email.id_for_label }}">Email</label>
+                                {{ comment_form.email }}
+                                {% if comment_form.email.help_text %}
+                                <p class="help">{{ comment_form.email.help_text|safe }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 fl_icon">
+                            <div class="form-group fl_icon">
+                                {{ comment_form.body.errors }}
+                                <div class="icon"><i class="fa fa-envelope"></i></div>
+                                <label for="{{ comment_form.body.id_for_label }}">Body</label>
+                                {{ comment_form.body }}
+                                {% if comment_form.body.help_text %}
+                                <p class="help">{{ comment_form.body.help_text|safe }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right btn-lg">Submit</button>
+                  </form>
+                  {% endif %}    
+                </div>
+              </div>
+{% endblock content %}

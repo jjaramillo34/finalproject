@@ -19,12 +19,18 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('home.urls')),
+    path('', include('blog.urls')),
+    path('about/', include('about.urls')),
+    path('contact/', include('contact.urls')),
+    #path('', include('home.urls')),
     path('course/', include('course.urls')),
     path('homework/', include('homework.urls')),
     path('profesor/', include('profesor.urls')),
     path('student/', include('student.urls')),
     path('user/', include('user.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    # include urls
 ]
 
 if settings.DEBUG:
