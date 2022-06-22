@@ -5,7 +5,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-0 py-3">
     <div class="container-xl">
       <!-- Logo -->
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="blog:home">
         <img src="https://preview.webpixels.io/web/img/logos/clever-light.svg" class="h-8" alt="...">
       </a>
       <!-- Navbar toggle -->
@@ -16,7 +16,7 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <!-- Nav -->
         <div class="navbar-nav mx-lg-auto">
-          <a class="nav-item nav-link active" href="#" aria-current="page">Home</a>
+          <a class="nav-item nav-link active" href="blog:home" aria-current="page">Home</a>
           <a class="nav-item nav-link" href="blog:home">Blog</a>
           <a class="nav-item nav-link" href="#">About</a>
           <a class="nav-item nav-link" href="#">Contact</a>
@@ -26,13 +26,13 @@
           <div class="row">
             <div class="col-12 mb-3">
               {% if not user.is_anonymous %}
-                <span>
+                <span style="color:cyan;">
                   Your are logged in as
-                  <strong>{{ user }}</strong>.
+                  <strong>{{ user }}</strong>
                 </span>
-                <a href="{% url 'user:user-logout' %}" id="logout-btn" class="btn btn-danger" role="button">Log out</a>
-              {% else %}
-                <button id="login-btn" class="btn btn-primary" type="button" name="button">Log in</button>
+                <a class="btn btn-danger btn-lg" href="{% url 'user:logout' %}" role="button">Sign out</a>
+                {% else %}
+                <a class="btn btn-primary btn-lg" href="{% url 'user:login' %}" role="button">Sign in</a>
               {% endif %}
             </div>
         </div>
@@ -40,26 +40,61 @@
         <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
           <div class="row">
             <div class="col-12 mb-3">
-              <button id="signup-btn" class="btn btn-primary" type="button" name="button">Sign up</button>
+              <a class="btn btn-secondary btn-lg" href="{% url 'user:signup' %}" role="button">Sign up</a>
             </div>
           </div>
         </div>
       </div>
+      {% if user.is_authenticated %}
+        <ul class="navbar-nav">
+          <!-- Avatar -->
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle d-flex align-items-center"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-mdb-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img
+                src="https://cdn.vectorstock.com/i/1000x1000/51/99/icon-of-user-avatar-for-web-site-or-mobile-app-vector-3125199.webp"
+                class="rounded-circle"
+                height="35"
+                alt="Portrait of a Woman"
+                loading="lazy"
+              />
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li>
+                <a class="dropdown-item" href="{% url 'user:user-profile' %}">My profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'blog:user_blogs' %}">My blogs</a>
+              </li>
+              {% if user.is_superuser %}
+              <li>
+                <a class="dropdown-item" href="{% url 'blog:users_management' %}">Manage Users</a>
+              </li>
+              {% endif %}
+            </ul>
+          </li>
+        </ul>
+      {% endif %}  
     </div>
   </nav>
-
 
   {% block extrascripts %}
   <script type="text/javascript">
       $(function () {
           // Login
           $("#login-btn").modalForm({
-            formURL: "{% url 'user:login' %}"
+            //formURL: "{% url 'user:login' %}"
           });
 
           //  Signup
           $("#signup-btn").modalForm({
-            formURL: "{% url 'user:signup' %}"
+            //formURL: "{% url 'user:signup' %}"
           });
 
           

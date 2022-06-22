@@ -31,7 +31,6 @@ def get_avatar_url_ctx(request):
         return {"url": avatars[0].image.url}
     return {}
 
-
 def search(request):
     avatar_ctx = get_avatar_url_ctx(request)
     context_dict = {**avatar_ctx}
@@ -39,11 +38,14 @@ def search(request):
         search_param = request.GET['search_param']
         query = Q(name__contains=search_param)
         query.add(Q(code__contains=search_param), Q.OR)
-        courses = Course.objects.filter(query)
+        #courses = Course.objects.filter(query)
+        post_list = Post.objects.filter(query=query)
         context_dict.update({
-            'courses': courses,
+            'post_list': post_list,
             'search_param': search_param,
         })
+        
+    print(context_dict)
     return render(
         request=request,
         context=context_dict,
