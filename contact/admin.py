@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from about.models import About
+from contact.models import Contact
 
 # Register your models here.
-admin.site.register(About)
+admin.site.register(Contact)
 

@@ -21,6 +21,8 @@ from django.conf.urls import handler403
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
+    path('about/', include('about.urls')),
+    path('contact/', include('contact.urls')),
     #path('', include('home.urls')),
     path('course/', include('course.urls')),
     path('homework/', include('homework.urls')),
