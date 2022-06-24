@@ -18,7 +18,6 @@ from django.views.generic import FormView, TemplateView
 from requests import request
 from traitlets import Instance
 from blog.forrms import SearchForm
-#from comment.forms import CommentForm, CrispyCommentForm
 from comment.forms import CommentForm
 from blog.models import Post
 from comment.models import Comment
@@ -248,6 +247,7 @@ class PostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     
     #def get_initial(self):
     #    return self.request.GET
+
 @login_required    
 def user_management(request):
     if not request.user.is_superuser:

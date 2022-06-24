@@ -5,7 +5,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-0 py-3">
     <div class="container-xl">
       <!-- Logo -->
-      <a class="navbar-brand" href="blog:home">
+      <a class="navbar-brand" href="{% url 'blog:home' %}">
         <img src="https://preview.webpixels.io/web/img/logos/clever-light.svg" class="h-8" alt="...">
       </a>
       <!-- Navbar toggle -->
@@ -16,12 +16,13 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <!-- Nav -->
         <div class="navbar-nav mx-lg-auto">
-          <a class="nav-item nav-link active" href="blog:home" aria-current="page">Home</a>
-          <a class="nav-item nav-link" href="blog:home">Blog</a>
+          <a class="nav-item nav-link active" href="{% url 'blog:home' %}" aria-current="page">Home</a>
+          <a class="nav-item nav-link" href="{% url 'blog:home' %}">Blog</a>
           <a class="nav-item nav-link" href="#">About</a>
           <a class="nav-item nav-link" href="#">Contact</a>
         </div>
         <!-- Right navigation -->
+
         <div class="navbar-nav ms-lg-4">
           <div class="row">
             <div class="col-12 mb-3">
@@ -30,17 +31,31 @@
                   Your are logged in as
                   <strong>{{ user }}</strong>
                 </span>
-                <a class="btn btn-danger btn-lg" href="{% url 'user:logout' %}" role="button">Sign out</a>
+                <button class="btn btn-danger btn-lg" data-toggle="modal" data-target=".bs-example-modal-sm">Sign out</button>
                 {% else %}
                 <a class="btn btn-primary btn-lg" href="{% url 'user:login' %}" role="button">Sign in</a>
+                
               {% endif %}
             </div>
         </div>
+
+        <div class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header"><h4>Logout <i class="fa fa-lock"></i></h4></div>
+              <div class="modal-body"><i class="fa fa-question-circle"></i> Are you sure you want to log-off?</div>
+              <div class="modal-footer">
+                <a class="btn btn-danger btn-lg" href="{% url 'user:logout' %}" role="button">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Action -->
         <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
           <div class="row">
             <div class="col-12 mb-3">
-              <a class="btn btn-secondary btn-lg" href="{% url 'user:signup' %}" role="button">Sign up</a>
+              <a class="btn btn-secondary btn-lg" href="{% url 'user:user-register' %}" role="button">Register</a><br>
             </div>
           </div>
         </div>

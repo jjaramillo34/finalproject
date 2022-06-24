@@ -8,9 +8,7 @@
         <section class="">
           <p class="d-flex justify-content-center align-items-center">
             <span class="me-3">Register for free</span>
-            <button type="button" class="btn btn-outline-light btn-rounded">
-              Sign up!
-            </button>
+            <a class="btn btn-secondary btn-lg" href="{% url 'user:user-register' %}" role="button">Register!</a><br>
           </p>
         </section>
         <!-- Section: CTA -->
@@ -19,8 +17,8 @@
   
       <!-- Copyright -->
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2020 Copyright:
-        <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        © <script>document.write(new Date().getFullYear())</script> Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/">@Mazur & @Jaramillo</a>
       </div>
       <!-- Copyright -->
     </footer>
