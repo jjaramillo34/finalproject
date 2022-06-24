@@ -2,14 +2,17 @@
 {% load static %}
 {% block coderhouse_project_content %}
 
-<h2>Formulario para editar usuarios</h2>
+<h2>Registro</h2>
 <hr></hr>
-<h3>Usuario: {{user.username}}</h3>
+
+{% if form.errors %}
+<p style="color: red">Por favor diligenciar la forma completa.</p>
+{% endif %}
 
 <form action="" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" class="btn btn-primary" value="Guardar Usuario" />
+    <button type="submit">Registrar Usuario</button>
 </form>
 
 {% endblock %}

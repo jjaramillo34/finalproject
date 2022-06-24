@@ -1,4 +1,5 @@
 {% extends "home/base.html" %}
+{% block title %} Home Page {% endblock title%}
 {% load static %}
 {% load humanize %}
 {% block header %}
@@ -18,34 +19,27 @@
 {% endblock header %}
 
 {% block content %}
-
-{% if user.is_authenticated %}
-<div class="text-center">
-    <h2>Bienvenido {{ user.username }}</h2>
-    <h3><a style="color: rgb(3, 36, 184)" href="{% url 'user:avatar-load' %}">Cambiar Avatar</a></h3>
-    <img height="160px" src="{{url}}" alt="">
-</div>
-{% endif %}
-<h2>Search this Blog</h2>
+<center><h2>Search this Blog</h2></center>
 <hr>
 </hr>
 
-<form action="/search" method="GET">
-<div class="main">
-    <!-- Another variation with a button -->
-    <div class="input-group">
-        <input type="text" name="search_param" id="course_code_or_name" class="form-control" placeholder="Search this blog"
-        {% if search_param %} value="{{ search_param }}" {% endif %}>
-        <div class="input-group-append">
-        <button class="btn btn-secondary" type="button">
-            <i class="fa fa-search"></i>
-        </button>
-        <a style="color: blue" href="{% url 'blog:home' %}"><i class="fa fa-undo"></i></a>
+<form action="{% url 'blog:search_results' %}" method="get">
+    <div class="main">
+        <!-- Another variation with a button -->
+        <div class="input-group">
+            <input name="q" type="text" placeholder="Search this blog..." class="form-control">
+            
+            <div class="input-group-append">
+                <button class="btn btn-secondary" type="submit">
+                    <i class="fa fa-search" style="font-size:18px;" ></i>
+                </button>
+                
+            </div>
+            &nbsp;
+            <a style="color: blue" href="{% url 'blog:home' %}"><i class="fa fa-undo" style="font-size:36px; color:blue;"></i></a>
         </div>
     </div>
-</div>
 </form>
-
 <hr>
 </hr>
 
@@ -53,6 +47,11 @@
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
+            {% if post_count == 0 %}
+            <h2>No results ....</h2>
+            {% else %}
+            <h2>Showing {{ post_count }} result{{ post_count|pluralize:'s' }} ....</h2>
+            {% endif %}
             <!-- Post preview-->
             {% for post in post_list %}
             <div class="post-preview">
@@ -96,13 +95,18 @@
       $(function () {
           // Login
           $("#login-btn").modalForm({
-            formURL: "{% url 'login' %}"
+            //formURL: "{% url 'login' %}"
           });
 
           //  Signup
           $("#signup-btn").modalForm({
-            formURL: "{% url 'user:signup' %}"
+            //formURL: "{% url 'user:signup' %}"
           });
+
+          // Hide message
+          $(".alert").fadeTo(2000, 500).slideUp(500, function () {
+            $(".alert").slideUp(500);
+        });
       });
   </script>
 {% endblock extrascripts %}
