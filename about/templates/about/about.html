@@ -3,7 +3,7 @@
 {% load humanize %}
 {% block header %}
 <!-- Page Header-->
-<header class="masthead" style='background-image: url("{% static 'home/assets/img/home-bg.jpg' %}")'>
+<header class="masthead" style='background-image: url("{% static 'home/assets/img/about-bg.jpg' %}")'>
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
@@ -17,13 +17,33 @@
 </header>
 {% endblock header %}
 
+
 {% block content %}
 
+<!-- Main Content-->
+<main class="mb-4">
+    <center><h1>What we did!</h1>
+        <hr style="width:25%;text-align:left;margin-left:0; height:3px;border-width:0;color:tail;background-color:gray;">
+        <br>
+    </center>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magnam, excepturi aliquid ex itaque esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <center><h1>Members</h1>
+        <hr style="width:25%;text-align:left;margin-left:0; height:3px;border-width:0;color:tail;background-color:gray;">
+        <br>
+    </center>
 
-<h1 class="titulo-about-us">
-    About Us
-</h1>
+</main>
 
+{% endblock content %}
 
 <div class="contenido-about">
     <div class="fila-integrantes">
@@ -61,7 +81,7 @@
                             <br> Data Analyst by Day #NFT minting@ with FND night. </span>
                     </div> 
                     <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
-                        <span><i class="fa fa-twitter"></i></span>
+                        <i class="fa fa-twitter"></i>
                         <span><i class="fa fa-facebook-f"></i></span>
                         <span><i class="fa fa-instagram"></i></span>
                         <span><i class="fa fa-linkedin"></i></span> 
@@ -70,14 +90,3 @@
             </div>
         </div>
     </div>
-<div class='texto-about'>
-    <h2 class='Que-hicimos'>
-        <h1>Que Hicimos</h1>
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    </h2>
-</div>
-{% endblock content %}
