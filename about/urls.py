@@ -4,6 +4,6 @@ from django.urls import path
 
 app_name = "about"
 urlpatterns = [
-    path('blog/about/', views.AboutView.as_view(), name='about'),
-    
+    path('<int:pk>', views.AboutViewDetail.as_view(), name='about'),
+    path('', views.about, name='about')    
 ]
