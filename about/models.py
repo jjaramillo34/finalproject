@@ -1,8 +1,14 @@
+from distutils.command.upload import upload
 from django.db import models
 
-# Create your models here.
 class About(models.Model):
-    title_header = models.CharField(max_length=50, default='About Our Team')
-    title_subheader = models.CharField(max_length=50, default='This is what we do')
     team1 = models.TextField()
     team2 = models.TextField()
+
+
+class Members(models.Model):
+    name = models.CharField(max_length=50, default='/')
+    github = models.CharField(max_length=250, default='www.github.com')
+    profession = models.CharField(max_length=250, default='/')
+    img = models.ImageField(upload_to='teams')
+    
