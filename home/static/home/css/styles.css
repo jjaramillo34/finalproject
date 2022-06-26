@@ -11272,3 +11272,9 @@ table.table .avatar {
     margin-top: 10px;
     font-size: 13px;
 }
+input[type=text], input[type=email], textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+   }
