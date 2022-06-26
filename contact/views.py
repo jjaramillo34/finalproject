@@ -1,19 +1,15 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
-from contact.models import Contact
-
-class ContactView(CreateView):
-    template_name = "contact/contact.html"
+from contact.forms import ContactForm
     
-def contact(request):
-    contact = Contact.objects.all()
-
-    context_dict = {
-        'contact': contact
-    }
-
-    return render(
-        request=request,
-        context=context_dict,
-        template_name="contact/contact.html"
-    )
+def contact_view(request):
+    header = "Contact Us"
+    subheader = "Send us an Email"
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'contact/success.html')
+    form = ContactForm()
+    context = {'header':header, 'subheader':subheader, 'form': form}
+    return render(request, 'contact/contact.html', context)
