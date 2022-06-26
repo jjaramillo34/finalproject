@@ -1,2 +1,30 @@
-<h1>Thank you for your inquiry</h1>
-<p>Your contact information and message was successfully submitted.</p>
+{% extends "home/base.html" %}
+{% block title %}Contact Success{% endblock title %}
+{% block header %}
+<!-- Page Header-->
+<header class="masthead" style='background-size: auto; background-image: url("https://www.lexblog.com/wp-content/uploads/2021/12/blogs-feature-v3.svg")'>
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Thanks for Visiting</h1>
+                    <span class="subheading">Contact us</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock header %}
+
+{% block content %}
+    <div class="card text-center">
+        <div class="card-header">Thanks</div>
+        <div class="card-body">
+          <h5 class="card-title">Thank you for your inquiry</h5>      
+          <p class="card-text">Your contact information and message was successfully submitted.</p>
+          <br><hr><a href="{% url 'blog:home' %}" class="btn btn-primary">Go to Homepage</a>
+          
+        </div>
+      </div>
+{% endblock content %}
+
