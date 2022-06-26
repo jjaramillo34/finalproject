@@ -109,7 +109,7 @@ def post_detail(request, slug):
 
 class SearchResultsView(ListView):
     model = Post
-    template_name = 'home/home.html'
+    template_name = 'blog/search_results.html'
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -120,28 +120,6 @@ class SearchResultsView(ListView):
         print(context)
         return context
         
-    
-#def post_search(request):
-#    form = SearchForm()
-#    if 'query' in request.GET:
-#        form = SearchForm(request.GET)
-#        if form.is_valid():
-#            cd = form.cleaned_data
-#            results = SearchQuerySet().models(Post).filter(content=cd['query']).load_all()
-#            # count total results
-#            total_results = results.count()
-#            
-#            context = {
-#                    'form': form,
-#                    'cd': cd,
-#                    'results': results,
-#                    'total_results': total_results
-#                    }
-#    return render(
-#        request=request, 
-#        template_name='blog/search_results.html', 
-#        context=context
-#        )
 
 @login_required
 def user_posts(request):
@@ -186,21 +164,6 @@ def user_post_remove(request, pk):
             errors = "An error has occured while deleting a Post"
             return render(request, 'home/errors/errors.html', {'errors': errors})
         
-#def blog_add(request):
-#	#categories = Categories.objects.all()
-#	if request.method == 'POST':
-#		blog_title = request.POST.get('title')
-#		blog_description = request.POST.get('category_description')
-#		if category_name == "" or category_description == "":
-#			errors = "All fields are Required"
-#			return render(request, 'home/errors/errors.html', {'errors': errors})
-#		if len(Categories.objects.filter(category_name=category_name)) != 0:
-#			errors = "This category " + category_name + " already exists in the category List"
-#			return render(request, 'backend/pages/errors/errors.html', {'errors': errors})
-#	catObj = Categories(category_name=category_name, category_description=category_description)
-#	catObj.save()
-#	return redirect('categories_list')	
-
 class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
     template_name = 'blog/post_detail.html'

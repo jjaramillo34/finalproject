@@ -36,7 +36,7 @@
                 
             </div>
             &nbsp;
-            <a style="color: blue" href="{% url 'blog:home' %}"><i class="fa fa-undo" style="font-size:36px; color:blue;"></i></a>
+            <a style="color: blue" href="{% url 'blog:home' %}"><i class="fa fa-undo" style="font-size:32px; color:blue;"></i></a>
         </div>
     </div>
 </form>
@@ -47,11 +47,6 @@
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
-            {% if post_count == 0 %}
-            <h2>No results ....</h2>
-            {% else %}
-            <h2>Showing {{ post_count }} result{{ post_count|pluralize:'s' }} ....</h2>
-            {% endif %}
             <!-- Post preview-->
             {% for post in post_list %}
             <div class="post-preview">
