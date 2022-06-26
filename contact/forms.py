@@ -1,11 +1,7 @@
-from django import forms
+from django.forms import ModelForm
+from .models import Contact
 
-class ContactForm(forms.Form):
-    email = forms.EmailField()
-    subject = forms.CharField(max_length=200)
-    message = forms.CharField(max_length=200)
-    
-class ContactForm1(forms.Form):
-    email = forms.EmailField()
-    subject = forms.CharField(max_length=200)
-    comments = forms.CharField(required=False, widget=forms.Textarea)
+class ContactForm(ModelForm):
+    class Meta:
+        model = Contact
+        fields = '__all__'
