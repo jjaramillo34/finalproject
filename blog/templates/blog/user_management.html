@@ -1,7 +1,6 @@
 {% extends "home/base.html" %}
 {% load static %}
 {% load humanize %}
-
 {% block header %}
 <!-- Page Header-->
 <header class="masthead" style='background-image: url("{% static 'home/assets/img/crud.png' %}"); background-size: auto;'>
@@ -75,7 +74,7 @@
                         {% endif %}
                         <td>
                             <a href="#" class="settings" title="Settings" data-toggle="tooltip">
-                                <i style="color:blue;" class="fa-solid fa-gear fa-lg"></i>
+                                <i style="color:blue;" class="fa fa-solid fa-gear fa-lg"></i>
                             </a>
                             <a href="#" class="delete" title="Delete" data-toggle="tooltip">
                                 <i style="color:red;" class="fa fa-times-circle fa-lg"></i>
@@ -99,5 +98,6 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
+
 {% endblock content %}
