@@ -19,6 +19,23 @@
 
 {% block content %}
 
+<main class="mb-4">
+    <center>
+        <h1>What we did</h1>
+        <div class="about-info">
+            {% for team in teams %}
+            <div class="persona-uno">
+                <h3 style="color:#900C3F;"> -- Javier Jaramillo --</h3>
+                <p style="text-align:justify; width: 1000px; justify-content: center;">{{ team.team1 }}</p>
+            </div>
+            <div class="persona-uno">
+                <h3 style="color:#900C3F;"> -- Javier Manzur -- </h3>
+                <p style="text-align:justify; width: 1000px; justify-content: center;">{{ team.team2 }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </center>
+    
 <!-- Main Content -->
     <section class="bg-light-blue pt-5 pb-5">
         <div class="container">
@@ -47,20 +64,5 @@
           </div>
       </div>
     </section>
-    <main class="mb-4">
-        <center>
-            <h1>What we did</h1>
-            <div class="about-info">
-                {% for team in teams %}
-                <div class="persona-uno">
-                    <h3 style="color:#900C3F;"> -- Javier Jaramillo --</h3>
-                    <p style="text-align:justify; width: 1000px; justify-content: center;">{{ team.team1 }}</p>
-                </div>
-                <div class="persona-uno">
-                    <h3 style="color:#900C3F;"> -- Javier Manzur -- </h3>
-                    <p style="text-align:justify; width: 1000px; justify-content: center;">{{ team.team2 }}</p>
-                </div>
-                {% endfor %}
-            </div>
-        </center>
+
 {% endblock content %}
