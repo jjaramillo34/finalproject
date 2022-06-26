@@ -48,12 +48,12 @@ INSTALLED_APPS = [
     'home',
     'homework',
     'profesor',
-    'student',
     'user',
     # more apps
     'blog',
     'about',
     'comment',
+    'contact',
     #third party apps
     'ckeditor',
     'ckeditor_uploader',
