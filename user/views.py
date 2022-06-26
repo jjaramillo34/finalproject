@@ -14,8 +14,8 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views import View
 from django.contrib.auth.decorators import login_required
-from user.forms import CustomAuthenticationForm, CustomUserCreationForm, UpdateProfileForm, UpdateUserForm, UserRegisterForm, UserEditForm, AvatarForm
-from user.models import Avatar
+from user.forms import CustomAuthenticationForm, CustomUserCreationForm, UpdateProfileForm, UpdateUserForm, UserRegisterForm, UserEditForm
+
 from django.urls import reverse_lazy
 
 from bootstrap_modal_forms.generic import (

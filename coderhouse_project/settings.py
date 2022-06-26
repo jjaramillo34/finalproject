@@ -44,10 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'course',
     'home',
-    'homework',
-    'profesor',
     'user',
     # more apps
     'blog',

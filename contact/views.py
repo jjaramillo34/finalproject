@@ -1,6 +1,3 @@
-from email import header
-from multiprocessing import context
-from attr import fields
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from contact.models import Contact
@@ -18,5 +15,5 @@ def contact(request):
     return render(
         request=request,
         context=context_dict,
-        template_name="homework/homework_list.html"
+        template_name="contact/contact.html"
     )

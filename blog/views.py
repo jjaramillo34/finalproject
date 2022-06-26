@@ -21,7 +21,7 @@ from blog.forrms import SearchForm
 from comment.forms import CommentForm
 from blog.models import Post
 from comment.models import Comment
-from user.models import Avatar, Profile
+from user.models import Profile
 
 
 # Create your views here.
@@ -96,27 +96,7 @@ def post_detail(request, slug):
 #    
 #    def get_success_url(self) -> str:
 #        return reverse('blog:post_create', args=[self.object.pk])
-    
-def get_avatar_url_ctx(request):
-    avatars = Avatar.objects.filter(user=request.user.id)
-    if avatars.exists():
-        return {"url": avatars[0].image.url}
-    return {}
 
-def search(request):
-    avatar_ctx = get_avatar_url_ctx(request)
-    context_dict = {**avatar_ctx}
-    if request.GET['search_param']:
-        search_param = request.GET['search_param']
-        query = Q(name__contains=search_param)
-        query.add(Q(code__contains=search_param), Q.OR)
-        #courses = Course.objects.filter(query)
-        post_list = Post.objects.all().filter(slug=query)
-        context_dict.update({
-            'post_list': post_list,
-            'search_param': search_param,
-        })
-        
 #def autocomplete(request):
 #    if 'term' in request.GET:
 #        qs = Post.objects.filter(title__icontains=request.GET.get('term'))

@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from bootstrap_modal_forms.forms import BSModalModelForm, BSModalForm
 from bootstrap_modal_forms.mixins import PopRequestMixin, CreateUpdateAjaxMixin
-from user.models import Avatar, Profile
+from user.models import Profile
 
 class CustomUserCreationForm(PopRequestMixin, CreateUpdateAjaxMixin, UserCreationForm):
     class Meta:
@@ -43,11 +43,6 @@ class UserEditForm(UserChangeForm):
             'email': forms.TextInput(attrs={'readonly': 'readonly'}),
         }
 
-
-class AvatarForm(ModelForm):
-    class Meta:
-        model = Avatar
-        fields = ('image', )
         
 class RegisterForm(UserCreationForm):
     # fields we want to include and customize in our form
