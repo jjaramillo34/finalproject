@@ -1,23 +1,113 @@
-{% extends "home/home.html" %}
+{% extends "home/base.html" %}
+{% block title %} Search Results {% endblock title%}
+{% load static %}
+{% load humanize %}
+{% block header %}
+<!-- Page Header-->
+<header class="masthead" style='background-image: url("{% static 'home/assets/img/home-bg.jpg' %}")'>
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>{{ header }}</h1>
+                    <span class="subheading">{{ subheader }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock header %}
 
 {% block content %}
-    {% if "query" in request.GET %}
-        <h1>Posts containing "{{ cd.query }}"</h1>
-        <h3>Found {{ total_results }} result{{ total_results|pluralize }}</h3>
-        {% for result in results %}
-        	{% with post=result.object %}
-        		<h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
-                {{ post.body|truncatewords:5 }}
-        	{% endwith %}
-        {% empty %}
-        	<p>There are no results for your query.</p>
-        {% endfor %}
-        <p><a href="{% url "blog:post_search" %}">Search again</a></p>
-    {% else %}
-        <h1>Search for posts</h1>
-        <form action="." method="get">
-            {{ form.as_p }}
-            <input type="submit" value="Search">
-        </form>
+<center><h2>Search this Blog</h2></center>
+<hr>
+</hr>
+
+<form action="{% url 'blog:search_results' %}" method="get">
+    <div class="main">
+        <!-- Another variation with a button -->
+        <div class="input-group">
+            <input name="q" type="text" placeholder="Search this blog..." class="form-control">
+            
+            <div class="input-group-append">
+                <button class="btn btn-secondary" type="submit">
+                    <i class="fa fa-search" style="font-size:18px;" ></i>
+                </button>
+                
+            </div>
+            &nbsp;
+            <a style="color: blue" href="{% url 'blog:home' %}"><i class="fa fa-undo" style="font-size:36px; color:blue;"></i></a>
+        </div>
+    </div>
+</form>
+<hr>
+</hr>
+
+{% if post_list %}
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            {% if post_count == 0 %}
+            <h2>No results ....</h2>
+            {% else %}
+            <h2>Showing {{ post_count }} result{{ post_count|pluralize:'s' }} ....</h2>
+            {% endif %}
+            <!-- Post preview-->
+            {% for post in post_list %}
+            <div class="post-preview">
+                <a href="{% url 'blog:post_detail' post.slug  %}">
+                    <h2 class="post-title">{{ post.title }}</h2>
+                    <h3 class="post-subtitle">{{ post.title_short }}</h3>
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <a href="#!">{{ post.author }}</a>
+                    on {{ post.created_on}}
+                    <small>{{ post.created_on|naturaltime }}</small>
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if post_list.has_other_pages %}
+  <nav aria-label="Page navigation conatiner"></nav>
+  <ul class="pagination justify-content-center">
+    {% if post_list.has_previous %}
+    <li><a href="?page={{ post_list.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
     {% endif %}
-{% endblock %}
+    {% if post_list.has_next %}
+    <li><a href="?page={{ post_list.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+   {% endif %}
+  </ul>
+  </nav>
+</div>
+{% endif %}
+
+{% endblock content %}
+
+{% block extrascripts %}
+  <script type="text/javascript">
+      $(function () {
+          // Login
+          $("#login-btn").modalForm({
+            //formURL: "{% url 'login' %}"
+          });
+
+          //  Signup
+          $("#signup-btn").modalForm({
+            //formURL: "{% url 'user:signup' %}"
+          });
+
+          // Hide message
+          $(".alert").fadeTo(2000, 500).slideUp(500, function () {
+            $(".alert").slideUp(500);
+        });
+      });
+  </script>
+{% endblock extrascripts %}
+
