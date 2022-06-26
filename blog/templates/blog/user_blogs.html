@@ -1,7 +1,6 @@
 {% extends "home/base.html" %}
 {% load static %}
 {% load humanize %}
-
 {% block header %}
 <!-- Page Header-->
 <header class="masthead" style='background-image: url("{% static 'home/assets/img/crud.png' %}"); background-size: auto;'>
@@ -82,6 +81,11 @@
                     <span class="btn-label"><i class="fas fa-trash"></i></span> Delete
                 </a>
             </td>
+            <td>
+                <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+            </td>
         </tr>
         {% else %}
         <tr>
@@ -120,4 +124,74 @@
     <!--Modal: modalConfirmDelete-->
 </div>
   {% endfor %}
+
+
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2>User <b>Blogs</b></h2>
+                    </div>
+                    <div class="col-sm-7">
+                        <button type="button" class="btn btn-info btn-rounded">
+                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            <span> Add New Post</span>
+                        </button>
+                        <button type="button" class="btn btn-info btn-rounded">Info</button>						
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Author</th>
+                        <th>Cover / Title</th>
+                        <th>Date Created</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for post in post_list %}
+                    <tr>
+                        <td>{{ post.id }}</td>
+                        <td>{{ post.author }}</td>
+                        <td><img src="{{ post.cover.url }}" class="avatar" alt="Avatar" width="60px" height="60px">{{ post.title }}</td>
+                        <td>{{ post.created_on }}</td>
+                        {% if post.status == 1 %}
+                            <td>
+                            <span class="badge badge-success rounded-pill d-inline">Publish</span>
+                            </td>
+                            {% else %}
+                            <td>
+                                <span class="badge badge-info text-dark rounded-pill d-inline">Draft</span>
+                            </td>
+                        {% endif %}
+                        <td>
+                            <a href="{% url 'blog:blog_view' pk=post.id %} class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                            <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    {%  endfor %}
+                </tbody>
+            </table>
+            <div class="clearfix">
+                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                <ul class="pagination">
+                    <li class="page-item disabled"><a href="#">Previous</a></li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}

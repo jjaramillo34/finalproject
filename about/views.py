@@ -1,6 +1,4 @@
 from email import header
-from multiprocessing import context
-from attr import fields
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from django.views import generic
