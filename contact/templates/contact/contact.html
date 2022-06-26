@@ -18,33 +18,12 @@
 {% endblock header %}
 
 {% block content %}
-
-
-<form action="" method="post">
-    <tr>
-        <th>
-            <label for="id_email">Email:</label>
-        </th>
-        <td>
-            <input type="email" name="email" placeholder="Enter your Email" maxlength="254" required id="id_email">
-        </td>
-    </tr>
-    <tr>
-        <th>
-            <label for="id_subject">Subject:</label>
-        </th>
-        <td>
-            <input type="text" name="subject" placeholder="Enter your mail subject" maxlength="255" required id="id_subject">
-        </td>
-    </tr>
-    <tr>
-        <th>
-            <label for="id_message">Message:</label>
-        </th>
-        <td>
-            <textarea name="message" placeholder="Please type your message" cols="40" rows="10" required id="id_message"></textarea>
-        </td>
-    </tr>
-    <input type="submit" value="Send">
-</form>
+    <center/>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }} 
+            {{ form.as_p }}
+            <input type="submit" value="Save">
+        </form>
+    </center>
 {% endblock content %}
