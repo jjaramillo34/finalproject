@@ -52,7 +52,9 @@
                     {% for user in users %}
                     <tr>
                         <td>{{ user.id }}</td>
-                        <td><img src="/examples/images/avatar/1.jpg" class="avatar" alt="Avatar">{{ user.username }}</td>
+                        <td><img src="https://i.pinimg.com/236x/9c/99/bc/9c99bc26ff55b330ace13e9c3abd82dd.jpg" class="avatar" alt="Avatar" width="60">
+                            {{ user.username }}
+                        </td>
                         <td>{{ user.date_joined }}</td>
                         {% if user.last_login %}
                             <td>{{ user.last_login }}</td>

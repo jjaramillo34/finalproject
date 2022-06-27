@@ -99,20 +99,3 @@
     </div>
   </nav>
 
-  {% block extrascripts %}
-  <script type="text/javascript">
-      $(function () {
-          // Login
-          $("#login-btn").modalForm({
-            //formURL: "{% url 'user:login' %}"
-          });
-
-          //  Signup
-          $("#signup-btn").modalForm({
-            //formURL: "{% url 'user:signup' %}"
-          });
-
-          
-      });
-  </script>
-{% endblock extrascripts %}
