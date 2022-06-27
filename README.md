@@ -109,7 +109,7 @@ $ python manage.py makemigrations
 $ python manage.py migrate
 
 # Run the project
-$ python mang runserver
+$ python manage.py runserver
 
 # The server will initialize in the <http://localhost:8000>
 ```
