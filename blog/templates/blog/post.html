@@ -78,7 +78,7 @@
                         <div class="col-xs-12 col-sm-6">
                             <div class="form-group fl_icon">
                                 {{ comment_form.name.errors }}
-                                <div class="icon"><i class="fa fa-user"></i></div>
+                                
                                 <label for="{{ comment_form.name.id_for_label }}">Name</label>
                                 {{ comment_form.name }}
                                 {% if comment_form.name.help_text %}
@@ -89,7 +89,6 @@
                         <div class="col-xs-12 col-sm-6 fl_icon">
                             <div class="form-group fl_icon">
                                 {{ comment_form.email.errors }}
-                                <div class="icon"><i class="fa fa-envelope"></i></div>
                                 <label for="{{ comment_form.email.id_for_label }}">Email</label>
                                 {{ comment_form.email }}
                                 {% if comment_form.email.help_text %}
@@ -100,7 +99,7 @@
                         <div class="col-xs-12 col-sm-6 fl_icon">
                             <div class="form-group fl_icon">
                                 {{ comment_form.body.errors }}
-                                <div class="icon"><i class="fa fa-envelope"></i></div>
+                                
                                 <label for="{{ comment_form.body.id_for_label }}">Body</label>
                                 {{ comment_form.body }}
                                 {% if comment_form.body.help_text %}
