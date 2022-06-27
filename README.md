@@ -25,7 +25,12 @@
   <img alt="Github stars" src="https://img.shields.io/github/stars/Doneuno/buscadorpelis?color=56BEB8" />
 </p>
 
-
+<h3> Video showing how it works </h3>
+https://drive.google.com/file/d/1lNY7McjJw1519IE92SIL0Eyhsogyio3c/view?usp=sharing
+<br>
+<h3> link to the heroku deploy </h3
+  https://shielded-anchorage-15152.herokuapp.com/
+<br>
 <p align="center">
   <a href="#dart-about">About</a> &#xa0; | &#xa0; 
   <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
