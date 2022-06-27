@@ -1,0 +1,22 @@
+Name: Unpublish a Blog Entry
+
+Ojective: Verify that any entry blog can be unpublished by the owner user
+
+Enviroment: 
+    * Google Chrome Version 102.0.5005.115
+    * OSX version 10.15.7
+
+Preconditions:
+    * Enter to The Blog Webpage
+    * Must be logged into the post owner user
+
+Steps:
+    1. Open the webpage
+    2. Click on the profile pic
+    3. Click on "my blogs"
+    4. Click edit on one entry
+    5. Select the satus as "Draft"
+    6. Click Save
+
+Expected Result:
+    * The new post must be unpublished, and can't be seeing under "Blog" page.
