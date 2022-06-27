@@ -25,12 +25,6 @@
   <img alt="Github stars" src="https://img.shields.io/github/stars/Doneuno/buscadorpelis?color=56BEB8" />
 </p>
 
-<h3> Video showing how it works </h3>
-https://drive.google.com/file/d/1lNY7McjJw1519IE92SIL0Eyhsogyio3c/view?usp=sharing
-<br>
-<h3> link to the heroku deploy </h3
-  https://shielded-anchorage-15152.herokuapp.com/
-<br>
 <p align="center">
   <a href="#dart-about">About</a> &#xa0; | &#xa0; 
   <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
@@ -45,7 +39,20 @@ https://drive.google.com/file/d/1lNY7McjJw1519IE92SIL0Eyhsogyio3c/view?usp=shari
 
 ## About ##
 
-A Blog made with python and Django for Python Coderhouse Course
+* A Blog made with python and Django for Python Coderhouse Course
+
+<h3> Video showing how it works </h3>
+<br>
+
+![picture 1](images/658c19c64229bd31bbbe3de4808d037b8d28b51d3d32e12f2f4cb59e896b25b7.gif)
+
+
+<h3> link to the heroku deploy </h3
+
+- [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://shielded-anchorage-15152.herokuapp.com/)
+
+<br>
+
 <h1>Made by: Javier Jaramillo</h1>
 <h4>
 * All user related functionality (log in, log out, etc)
