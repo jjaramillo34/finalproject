@@ -1,50 +1,70 @@
 {% extends "home/base.html" %}
 {% block title %}Profile Page{% endblock title %}
-{% block content %}
-    <div class="row my-3 p-3">
-        
-        <img
-                    src="{{ user.profile.avatar.url }}"
-                    alt=""
-                    style="width: 45px; height: 45px"
-                    class="rounded-circle"
-                    />
-    </div>
-    {% if user_form.errors %}
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            <div id="form_errors">
-                {% for key, value in user_form.errors.items %}
-                    <strong>{{ value }}</strong>
-                {% endfor %}
-            </div>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    {% endif %}
-    <div class="form-content">
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="form-row">
-                <div class="col-md-5">
-                    <div class="form-group">
-                        <label class="small mb-1">Username:</label>
-                            {{ user_form.username }}
-                        <label class="small mb-1">Email:</label>
-                            {{ user_form.email }}
-                    </div>
-                    <div class="form-group">
-                        <a href="{% url 'password_change' %}">Change Password</a>
-                        <hr>
-                        <label class="small mb-1">Change Avatar:</label>
-                        {{ profile_form.avatar }}
-                    </div>
-                    <label class="small mb-1">Bio:</label> {{ profile_form.bio }}
+
+{% block header %}
+<!-- Page Header-->
+<header class="masthead" style='background-image: url("https://www.oberlo.com/media/1603898786-profile-1.jpg?fit=max&fm=webp&w=1824"); background-size: auto;'>
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>{{ header }}</h1>
+                    <span class="subheading">{{ subheader }}</span>
                 </div>
             </div>
-            <br><br>
-            <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
-            <button type="reset" class="btn btn-dark btn-lg">Reset</button>
-        </form>
+        </div>
     </div>
+</header>
+{% endblock header %}
+
+{% block content %}
+
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <h1>Update Profile</h1>
+            <div class="row my-3 p-3">
+                <img src="{{ user.profile.avatar.url }}" alt="" style="width: 180px; height: 150px" class="rounded-circle"/>
+            </div>
+            {% if user_form.errors %}
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div id="form_errors">
+                        {% for key, value in user_form.errors.items %}
+                            <strong>{{ value }}</strong>
+                        {% endfor %}
+                    </div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+            <div class="form-content">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label class="small mb-1">Username:</label>
+                                    {{ user_form.username }}
+                                <label class="small mb-1">Email:</label>
+                                    {{ user_form.email }}
+                            </div>
+                            <div class="form-group">
+                                <a href="{% url 'password_change' %}">Change Password</a>
+                                <hr>
+                                <label class="small mb-1">Change Avatar:</label>
+                                {{ profile_form.avatar }}
+                            </div>
+                            <label class="small mb-1">Bio:</label> {{ profile_form.bio }}
+                        </div>
+                    </div>
+                    <br><br>
+                    <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
+                    <button type="reset" class="btn btn-dark btn-lg">Reset</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
 {% endblock content %}

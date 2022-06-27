@@ -5,8 +5,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.views.generic import DetailView
-from django.views.generic.edit import CreateView
-from django.urls import reverse
+from django.views.generic.edit import CreateView, UpdateView
 from django.db.models import Q
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.models import User
@@ -16,15 +15,24 @@ from django.core.exceptions import PermissionDenied
 
 from django.views.generic import FormView, TemplateView
 from requests import request
-from traitlets import Instance
-from blog.forrms import SearchForm
 from comment.forms import CommentForm
 from blog.models import Post
 from comment.models import Comment
 from user.models import Profile
 
-
 # Create your views here.
+class SearchResultsView(ListView):
+    model = Post
+    template_name = 'blog/search_results.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        query = self.request.GET.get("q")
+        context['post_list'] = Post.objects.filter(Q(title__icontains=query))
+        context['post_count'] = Post.objects.filter(Q(title__icontains=query)).count()
+        print(type(context['post_count']))
+        print(context)
+        return context
     
 def PostList(request):
     object_list = Post.objects.filter(status=1).order_by('-created_on')
@@ -107,19 +115,6 @@ def post_detail(request, slug):
 #        return JsonResponse(titles, safe=False)
 #    return render(request, 'home/home.html')
 
-class SearchResultsView(ListView):
-    model = Post
-    template_name = 'blog/search_results.html'
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        query = self.request.GET.get("q")
-        context['post_list'] = Post.objects.filter(Q(title__icontains=query))
-        context['post_count'] = Post.objects.filter(Q(title__icontains=query)).count()
-        print(type(context['post_count']))
-        print(context)
-        return context
-        
 
 @login_required
 def user_posts(request):
@@ -190,6 +185,23 @@ class PostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     
     #def get_initial(self):
     #    return self.request.GET
+    
+class PostEditView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = Post
+    fields = ['title', 'slug', 'cover', 'status','body']
+    success_url = reverse_lazy('blog:user_blogs')
+    template_name = 'blog/post_form.html'
+    success_message = "Post was edit successfully"
+    prepopulated_fields = {'slug':('title')}
+    
+    def get_context_data(self, **kwargs):
+        kwargs['latest_posts_list'] = Post.objects.order_by('-id')
+        return super(PostEditView, self).get_context_data(**kwargs)
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
 
 @login_required    
 def user_management(request):

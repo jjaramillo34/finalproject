@@ -28,10 +28,12 @@
                         <h2>User <b>Blogs</b></h2>
                     </div>
                     <div class="col-sm-7">
+                        <a href="{% url 'blog:blog_create' %}">
                         <button type="button" class="btn btn-info btn-rounded">
                             <i class="fa fa-plus-circle" aria-hidden="true"></i>
                             <span> Add New Post </span>
                         </button>
+                        </a>
                         <button type="button" class="btn btn-info btn-rounded">Info</button>						
                     </div>
                 </div>
@@ -76,11 +78,11 @@
                             <a type="button" class="btn btn-labeled  btn-sm btn-primary toastsDefaultDanger" href="{% url 'blog:blog_view' pk=post.id %}">
                                 <span class="btn-label"><i class="fas fa-folder" style="color:white; font-size:16px; "></i></span>
                             </a>                          
-                            <a type="button" class="btn btn-labeled  btn-sm btn-info toastsDefaultDanger" href="#">
+                            <a type="button" class="btn btn-labeled  btn-sm btn-info toastsDefaultDanger" href="{% url 'blog:blog_edit' pk=post.id %}">
                                 <span class="btn-label"><i class="fas fa-pencil-alt" style="color:white; font-size:16px;"></i></span>
                             </a>                                                                              
                             <a type="button" class="btn btn-labeled  btn-sm btn-danger" data-toggle="modal" data-target="#modalDelete{{ post.id }}">
-                                <span class="btn-label"><i class="fas fa-trash" style="color:white; font-size:16px;"></i></span>
+                                <span class="btn-label"><i class="fas fa-trash" style="color:white; font-size:16px; "></i></span>
                             </a>
                         </td>
                     </tr>

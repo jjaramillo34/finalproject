@@ -47,15 +47,15 @@ class UserEditForm(UserChangeForm):
 class RegisterForm(UserCreationForm):
     # fields we want to include and customize in our form
     first_name = forms.CharField(max_length=100,
-                                 required=True,
-                                 widget=forms.TextInput(attrs={'placeholder': 'First Name',
-                                                               'class': 'form-control',
-                                                               }))
+                                required=True,
+                                widget=forms.TextInput(attrs={'placeholder': 'First Name',
+                                'class': 'form-control',
+                                }))
     last_name = forms.CharField(max_length=100,
                                 required=True,
                                 widget=forms.TextInput(attrs={'placeholder': 'Last Name',
-                                                              'class': 'form-control',
-                                                              }))
+                                'class': 'form-control',
+                                }))
     username = forms.CharField(max_length=100,
                                required=True,
                                widget=forms.TextInput(attrs={'placeholder': 'Username',
@@ -108,10 +108,10 @@ class LoginForm(AuthenticationForm):
 
 class UpdateUserForm(forms.ModelForm):
     username = forms.CharField(max_length=100,
-                               required=True,
-                               widget=forms.TextInput(attrs={'class': 'form-control'}))
+                            required=True,
+                            widget=forms.TextInput(attrs={'class': 'form-control'}))
     email = forms.EmailField(required=True,
-                             widget=forms.TextInput(attrs={'class': 'form-control'}))
+                            widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = User
@@ -119,7 +119,7 @@ class UpdateUserForm(forms.ModelForm):
 
 class UpdateProfileForm(forms.ModelForm):
     avatar = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
-    bio = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5}))
+    bio = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 6}))
 
     class Meta:
         model = Profile
