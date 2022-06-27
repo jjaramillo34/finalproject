@@ -43,6 +43,26 @@
 ## About ##
 
 A Blog made with python and Django for Python Coderhouse Course
+<h1>Made by: Javier Jaramillo</h1>
+<h4>
+* All user related functionality (log in, log out, etc)
+<br>
+* Home Page
+<br>
+* Blog related Functionality (Create, Edit, Delete and Read)
+</h4>
+
+
+<h1>and: Javier Manzur</h1>
+<h4> 
+* About Us Page
+<br>
+* Contact Functionality
+<br>
+* Test Cases
+<br>
+* Read me 
+</h4>
 
 ## Features ##
 
