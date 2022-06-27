@@ -133,7 +133,7 @@ def user_posts(request):
         #user_posts = get_object_or_404(Post, id=1)
         user_posts = Post.objects.all()
         print(user_posts)
-        context = {'post_list': user_posts, 'user': user}
+        context = {'post_list': user_posts, 'user': user, 'header': 'CRUD Blogs', 'subheader': 'Create, Read, Update and Delete'}
         return render(request=request, 
                     template_name='blog/user_blogs.html', 
                     context=context)

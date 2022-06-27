@@ -18,113 +18,6 @@
 {% endblock header %}
 
 {% block content %}
-<div class="card-header">
-    <h3 class="card-title">Blogs</h3>
-    
-    <div class="card-tools">
-        <a type="button" class="btn btn-secondary btn-rounded" href="{% url 'blog:blog_create'%}">
-        <span class="btn-label"><i class="fas fa-plus"></i></span> Add Blog
-        </a>
-      
-    </div>
-</div>
-<table class="table table-striped projects">
-    <thead class="bg-light">
-      <tr>
-        <th>Blog Title</th>
-        <th>Title</th>
-        <th>Status</th>
-        <th>Position</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-    {% for post in post_list %}
-        {% if post %}
-        <tr>
-            <td>
-            <div class="d-flex align-items-center">
-                <img
-                    src="{{ post.cover.url }}"
-                    alt=""
-                    style="width: 45px; height: 45px"
-                    class="rounded-circle"
-                    />
-                <div class="ms-3">
-                <p class="fw-bold mb-1">{{ post.title }}</p>
-                <p class="text-muted mb-0">{{ post.author }}</p>
-                </div>
-            </div>
-            </td>
-            <td>
-            <p class="fw-normal mb-1">Software engineer</p>
-            <p class="text-muted mb-0">IT department</p>
-            </td>
-            {% if post.status == 1 %}
-            <td>
-            <span class="badge badge-success rounded-pill d-inline">Publish</span>
-            </td>
-            {% else %}
-            <td>
-                <span class="badge badge-info text-dark rounded-pill d-inline">Draft</span>
-            </td>
-            {% endif %}
-            <td>{{ post.created_on|naturalday }}</td>
-            <td>
-                <a type="button" class="btn btn-labeled  btn-sm btn-primary toastsDefaultDanger" href="{% url 'blog:blog_view' pk=post.id %}">
-                    <span class="btn-label"><i class="fas fa-folder"></i></span> View
-                </a>                          
-                <a type="button" class="btn btn-labeled  btn-sm btn-info toastsDefaultDanger" href="#">
-                    <span class="btn-label"><i class="fas fa-pencil-alt"></i></span> Edit
-                </a>                                                                              
-                <a type="button" class="btn btn-labeled  btn-sm btn-danger" data-toggle="modal" data-target="#modalDelete{{ post.id }}">
-                    <span class="btn-label"><i class="fas fa-trash"></i></span> Delete
-                </a>
-            </td>
-            <td>
-                <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-            </td>
-        </tr>
-        {% else %}
-        <tr>
-            <td>
-            <p class="fw-normal mb-1">{{ post.author }} don't have any posts yet</p>
-            </td>
-        </tr>
-        {% endif %}
-      {% endfor %}
-    </tbody>
-  </table>
-  {% for post in post_list %}
-  <div class="modal fade" id="modalDelete{{ post.id }}" tabindex="-1" role="dialog" aria-labelledby="modalConfirmDelete" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
-        <!--Content-->
-        <div class="modal-content text-center">
-        <!--Header-->
-        <div class="modal-header d-flex justify-content-center">
-            <small><p class="heading">Are you sure you want to delete Post <strong>{{ post.title_short }}</strong>?</p></small>
-        </div>
-
-        <!--Body-->
-        <div class="modal-body">
-            <i class="fas fa-times fa-4x animated rotateIn"></i>
-        </div>
-
-        <!--Footer-->
-        <div class="modal-footer flex-center">
-            <a href="{% url 'blog:blog_delete' pk=post.id %}" class="btn  btn-outline-danger">Yes</a>
-            <a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">No</a>
-        </div>
-        </div>
-        <!--/.Content-->
-        </div>
-    </div>
-    <!--Modal: modalConfirmDelete-->
-</div>
-  {% endfor %}
-
 
 <div class="container-xl">
     <div class="table-responsive">
@@ -137,7 +30,7 @@
                     <div class="col-sm-7">
                         <button type="button" class="btn btn-info btn-rounded">
                             <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                            <span> Add New Post</span>
+                            <span> Add New Post </span>
                         </button>
                         <button type="button" class="btn btn-info btn-rounded">Info</button>						
                     </div>
@@ -180,9 +73,15 @@
                             </td>
                         {% endif %}
                         <td>
-                            <a href="{% url 'blog:blog_view' pk=post.id %}" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                            <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                            <a type="button" class="btn btn-labeled  btn-sm btn-primary toastsDefaultDanger" href="{% url 'blog:blog_view' pk=post.id %}">
+                                <span class="btn-label"><i class="fas fa-folder" style="color:white; font-size:16px; "></i></span>
+                            </a>                          
+                            <a type="button" class="btn btn-labeled  btn-sm btn-info toastsDefaultDanger" href="#">
+                                <span class="btn-label"><i class="fas fa-pencil-alt" style="color:white; font-size:16px;"></i></span>
+                            </a>                                                                              
+                            <a type="button" class="btn btn-labeled  btn-sm btn-danger" data-toggle="modal" data-target="#modalDelete{{ post.id }}">
+                                <span class="btn-label"><i class="fas fa-trash" style="color:white; font-size:16px;"></i></span>
+                            </a>
                         </td>
                     </tr>
                     {%  endfor %}
@@ -203,4 +102,31 @@
         </div>
     </div>
 </div>
+{% for post in post_list %}
+  <div class="modal fade" id="modalDelete{{ post.id }}" tabindex="-1" role="dialog" aria-labelledby="modalConfirmDelete" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+        <!--Content-->
+        <div class="modal-content text-center">
+        <!--Header-->
+        <div class="modal-header d-flex justify-content-center">
+            <small><p class="heading">Are you sure you want to delete Post <strong>{{ post.title_short }}</strong>?</p></small>
+        </div>
+
+        <!--Body-->
+        <div class="modal-body">
+            <i class="fas fa-times fa-4x animated rotateIn"></i>
+        </div>
+
+        <!--Footer-->
+        <div class="modal-footer flex-center">
+            <a href="{% url 'blog:blog_delete' pk=post.id %}" class="btn  btn-outline-danger">Yes</a>
+            <a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">No</a>
+        </div>
+        </div>
+        <!--/.Content-->
+        </div>
+    </div>
+    <!--Modal: modalConfirmDelete-->
+</div>
+  {% endfor %}
 {% endblock content %}

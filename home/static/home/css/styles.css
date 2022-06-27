@@ -11170,7 +11170,7 @@ table.table th i {
 
 table.table td:last-child i {
     opacity: 0.9;
-    font-size: 22px;
+    font-size: 18px;
     margin: 0 5px;
 }
 
@@ -11178,6 +11178,7 @@ table.table td a {
     font-weight: bold;
     color: #566787;
     display: inline-block;
+    vertical-align: middle;
     text-decoration: none;
 }
 
@@ -11272,9 +11273,12 @@ table.table .avatar {
     margin-top: 10px;
     font-size: 13px;
 }
-input[type=text], input[type=email], textarea {
+
+input[type=text],
+input[type=email],
+textarea {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-   }
+}
