@@ -1,0 +1,24 @@
+Name: Create New Blog Entry
+
+Ojective: Verify that a new entry can be added to the blog by a user
+
+Enviroment: 
+    * Google Chrome Version 102.0.5005.115
+    * OSX version 10.15.7
+
+Preconditions:
+    * Enter to The Blog Webpage
+    * Must be logged into any user
+
+Steps:
+    1. Open the webpage
+    2. Click on "Add new post"
+    3. Type a Title
+    4. Type a slug for direction
+    5. Upload a cover art
+    6. Select the satus as "Publish"
+    7. Type the blog content
+    8. Click Save
+
+Expected Result:
+    * The new post must be created, and can be seeing under "Blog" page, with username, date created, title and short info of the blog content.
