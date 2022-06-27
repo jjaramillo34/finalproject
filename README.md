@@ -58,6 +58,7 @@ A Blog made with python and Django for Python Coderhouse Course
 :heavy_check_mark: Avatar upload;\
 :heavy_check_mark: Sign up and login;\
 :heavy_check_mark: Comment on blogs;\
+:heavy_check_mark: Comment Moderation by admins;\
 :heavy_check_mark: Pagination;\
 :heavy_check_mark: Manage user for admin;\
 :heavy_check_mark: Contact Page;\
