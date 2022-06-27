@@ -54,10 +54,7 @@ INSTALLED_APPS = [
     #third party apps
     'ckeditor',
     'ckeditor_uploader',
-    "crispy_forms",
-    "crispy_bootstrap5",
-    "widget_tweaks",
-    'bootstrap_modal_forms',
+    'widget_tweaks',
     'social_django',
 ]
 
