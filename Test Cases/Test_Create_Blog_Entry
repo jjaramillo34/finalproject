@@ -21,4 +21,4 @@ Steps:
     8. Click Save
 
 Expected Result:
-    * The new post must be created, and can be seeing under "Blog" page, with username, date created, title and short info of the blog content.
+    * The new post must be created, and can be seeing under "Blog" page, with username, date created, title and subtitle of the blog content.
