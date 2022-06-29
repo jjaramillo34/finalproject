@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'bootstrap_modal_forms',
     'social_django',
+    'materializecssform',
     # Media Cloudinary
     'cloudinary',
     'cloudinary_storage',

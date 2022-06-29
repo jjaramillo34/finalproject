@@ -1,13 +1,15 @@
 from django import forms
-from django.forms import ModelForm
+from django.core.exceptions import ValidationError
 from .models import Contact
 
-class ContactForm(ModelForm):
+class ContactForm(forms.ModelForm):
+    
     class Meta:
         model = Contact
         fields = '__all__'
-        widget = {
-            'email': forms.TextInput(attrs={'class' : 'form-group'}),
-            'subject': forms.TextInput(attrs={'class' : 'form-group'}),
-            'message': forms.Textarea(attrs={'class' : 'form-group'}),
-        }
+        
+    def clean_message(self):
+        message = self.cleaned_data.get('message')
+        if len(message) < 10:
+            raise ValidationError('The message must be at least 10 characters!')
+        return message
