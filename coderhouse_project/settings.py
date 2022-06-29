@@ -15,6 +15,10 @@ import environ
 import os
 from pathlib import Path
 
+# At the top of the settings
+import cloudinary
+import cloudinary_storage
+
 env = environ.Env()
 environ.Env.read_env()
 
@@ -59,6 +63,9 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'bootstrap_modal_forms',
     'social_django',
+    # Media Cloudinary
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -199,3 +206,11 @@ DATABASES['default'].update(db_from_env)
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
+# Cloudinary stuff
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': env('CLOUD_NAME', default=""),
+    'API_KEY': env('API_KEY', default=""),
+    'API_SECRET': env('API_SECRET', default=""),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
