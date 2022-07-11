@@ -1,4 +1,3 @@
-from attr import fields
 from django import forms
 from django.urls import reverse_lazy
 from comment.models import Comment
