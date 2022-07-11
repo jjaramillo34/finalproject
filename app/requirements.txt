@@ -4,3 +4,10 @@ django-heroku
 python-decouple
 psycopg2-binary
 django-environ
+django-ckeditor
+crispy-bootstrap5
+django-crispy-forms
+django-widget-tweaks
+django-bootstrap-modal-forms
+social-auth-app-django
+pillow
