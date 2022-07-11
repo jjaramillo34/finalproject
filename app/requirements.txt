@@ -1,0 +1,6 @@
+django
+cloudinary
+django-heroku
+python-decouple
+psycopg2-binary
+django-environ
