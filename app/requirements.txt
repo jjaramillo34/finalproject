@@ -1,5 +1,6 @@
 django
 cloudinary
+django-cloudinary-storage
 django-heroku
 python-decouple
 psycopg2-binary
@@ -11,3 +12,10 @@ django-widget-tweaks
 django-bootstrap-modal-forms
 social-auth-app-django
 pillow
+gunicorn
+djangorestframework
+python-decouple
+psycopg2-binary
+django-rosetta
+django-parler
+

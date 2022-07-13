@@ -17,9 +17,11 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import handler403
+from django.conf.urls.i18n import i18n_patterns
+from django.utils.translation import gettext_lazy as _
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
+urlpatterns = i18n_patterns(
+    path(_('admin/'), admin.site.urls),
     path('', include('blog.urls')),
     path('about/', include('about.urls')),
     path('contact/', include('contact.urls')),
@@ -27,8 +29,9 @@ urlpatterns = [
     path('user/', include('user.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('rosetta/', include('rosetta.urls')),  # NEW
     # include urls
-]
+)
 
 if settings.DEBUG:
      from django.conf.urls.static import static
