@@ -11,11 +11,11 @@ class AboutViewDetail(generic.DetailView):
     
 def about(request):
     context_dict = {}
-    header = "About Us"
-    subheader = "This is what we do"
+    #header = "About Us"
+    #subheader = "This is what we do"
     teams = About.objects.all()
     members = Members.objects.all()
-    context_dict = {'header':header, 'subheader':subheader, 'teams':teams, 'members':members}
+    context_dict = {'teams':teams, 'members':members}
     print('context_dict: ', context_dict)
     return render(
         request=request,

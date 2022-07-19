@@ -3,6 +3,8 @@ from parler.models import TranslatableModel, TranslatedFields
 
 class About(TranslatableModel):
     translations = TranslatedFields(
+        page_header = models.CharField(max_length=200),
+        page_subheader = models.CharField(max_length=200),
         team1 = models.TextField(),
         team2 = models.TextField(),
     )

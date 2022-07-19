@@ -1,6 +1,7 @@
 {% extends "home/base.html" %}
 {% load static %}
 {% load humanize %}
+{% load i18n %}
 {% block header %}
 <!-- Page Header-->
 <header class="masthead" style='background-image: url("{% static 'home/assets/img/home-bg.jpg' %}")'>
@@ -8,8 +9,10 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1>{{ header }}</h1>
-                    <span class="subheading">{{ subheader }}</span>
+                    {% for team in teams %}
+                    <h1>{{ team.page_header }}</h1>
+                    <span class="subheading">{{ team.page_subheader }}</span>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -21,7 +24,7 @@
 
 <main class="mb-4">
     <center>
-        <h1>Who we are</h1>
+        <h1>{% trans 'Who we are' %}</h1>
         <div class="about-info">
             {% for team in teams %}
             <div class="persona-uno">
@@ -41,7 +44,7 @@
         <div class="container">
           <div class="row align-items-center">
               <div class="col-lg-3 mb-3 mb-md-0">
-                  <span class="h2 d-block">Meet the members</span>
+                  <span class="h2 d-block">{% trans 'Meet the members'%}</span>
               </div>
               <div class="col-lg-9">
                   <div class="row">

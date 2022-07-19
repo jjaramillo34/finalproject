@@ -2,6 +2,7 @@
 {% block title %} Home Page {% endblock title%}
 {% load static %}
 {% load humanize %}
+{% load i18n %}
 {% block header %}
 <!-- Page Header-->
 <header class="masthead" style='background-image: url("{% static 'home/assets/img/home-bg.jpg' %}")'>
@@ -19,7 +20,7 @@
 {% endblock header %}
 
 {% block content %}
-<center><h2>Search this Blog</h2></center>
+<center><h2>{% blocktrans %}Search this Blog{% endblocktrans %}</h2></center>
 <hr>
 </hr>
 
@@ -55,9 +56,10 @@
                     <h3 class="post-subtitle">{{ post.title_short }}</h3>
                 </a>
                 <p class="post-meta">
-                    Posted by
+                    {% blocktrans %} Posted by {% endblocktrans %}
                     <a href="#!">{{ post.author }}</a>
-                    on {{ post.created_on}}
+                    {% blocktrans %} on {% endblocktrans %}
+                     {{ post.created_on}}
                     <small>{{ post.created_on|naturaltime }}</small>
                 </p>
             </div>
@@ -73,10 +75,10 @@
   <nav aria-label="Page navigation conatiner"></nav>
   <ul class="pagination justify-content-center">
     {% if post_list.has_previous %}
-    <li><a href="?page={{ post_list.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+    <li><a href="?page={{ post_list.previous_page_number }}" class="page-link">&laquo; {% trans 'PREV' %} </a></li>
     {% endif %}
     {% if post_list.has_next %}
-    <li><a href="?page={{ post_list.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+    <li><a href="?page={{ post_list.next_page_number }}" class="page-link"> {% trans 'NEXT' %} &raquo;</a></li>
    {% endif %}
   </ul>
   </nav>

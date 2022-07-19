@@ -22,16 +22,31 @@
           <a class="nav-item nav-link" href="{% url 'about:about' %}">{% blocktrans %}About{% endblocktrans %}</a>
           <a class="nav-item nav-link" href="{% url 'contact:contact' %}">{% blocktrans %}Contact{% endblocktrans %}</a>
           <div class="dropdown" style="display: inline-block;">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink78" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink78" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {% trans 'Language'%}
+            </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink78">
-                    {% for language in languages %}
-                        <a class="dropdown-item" href="/{{ language.code }}/"
-                          {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
-                          <span class="flag-icon flag-icon-us"></span> {{ language.name_local }}
-                        </a>
-                      </li>
-                    {% endfor %}              
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                <a class="dropdown-item" href="/{{ language.code }}" style="text-transform: capitalize;">
+                  {% if language.code == 'en' %}
+                  <span class="flag-icon flag-icon-us"></span>
+                    {{ language.name_local }}
+                  {% endif %}
+                  {% if language.code == 'es' %}
+                  <span class="flag-icon flag-icon-es"></span>
+                    {{ language.name_local }}
+                  {% endif %}
+                  {% if language.code == 'fr' %}
+                  <span class="flag-icon flag-icon-fr"></span>
+                    {{ language.name_local }}
+                  {% endif %}
+                </a> 
+                {% endfor %}
             </div>
+        </div>
         </div>
         </div>
         <!-- Right navigation -->
@@ -48,8 +63,9 @@
                   {% blocktrans %}Sign out{% endblocktrans %}
                 </button>
                 {% else %}
-                <a class="btn btn-primary btn-lg" href="{% url 'user:login' %}" role="button">Sign in</a>
-                
+                <a class="btn btn-primary btn-lg" href="{% url 'user:login' %}" role="button">
+                  {% blocktrans %}Sign in{% endblocktrans %}
+                </a>
               {% endif %}
             </div>
         </div>
@@ -101,14 +117,14 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li>
-                <a class="dropdown-item" href="{% url 'user:user-profile' %}">My profile</a>
+                <a class="dropdown-item" href="{% url 'user:user-profile' %}">{% blocktrans %}My Profile{% endblocktrans %}</a>
               </li>
               <li>
-                <a class="dropdown-item" href="{% url 'blog:user_blogs' %}">My blogs</a>
+                <a class="dropdown-item" href="{% url 'blog:user_blogs' %}">{% blocktrans %}My Blogs{% endblocktrans %}</a>
               </li>
               {% if user.is_superuser %}
               <li>
-                <a class="dropdown-item" href="{% url 'blog:users_management' %}">Manage Users</a>
+                <a class="dropdown-item" href="{% url 'blog:users_management' %}">{% blocktrans %}Manage Users{% endblocktrans %}</a>
               </li>
               {% endif %}
             </ul>

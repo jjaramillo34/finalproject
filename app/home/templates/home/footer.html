@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <section class="">
     <!-- Footer -->
     <footer class="text-center text-white" style="background-color: #0a4275;">
@@ -7,8 +8,17 @@
         <!-- Section: CTA -->
         <section class="">
           <p class="d-flex justify-content-center align-items-center">
-            <span class="me-3">Register for free</span>
-            <a class="btn btn-secondary btn-lg" href="{% url 'user:user-register' %}" role="button">Register!</a><br>
+            <span class="me-3">
+            {% blocktrans %}
+            Register for free
+            {% endblocktrans %}
+             </span>
+            <a class="btn btn-secondary btn-lg" href="{% url 'user:user-register' %}" role="button">
+              {% blocktrans %}
+              Register!  
+              {% endblocktrans %}
+            </a>
+            <br>
           </p>
         </section>
         <!-- Section: CTA -->

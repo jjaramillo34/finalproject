@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-18 21:53-0400\n"
-"PO-Revision-Date: 2022-07-18 21:55-0400\n"
+"POT-Creation-Date: 2022-07-19 16:17-0400\n"
+"PO-Revision-Date: 2022-07-19 16:16-0400\n"
 "Last-Translator:   <admin@xyz.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -18,6 +18,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
+
+#: about/templates/about/about.html:27
+msgid "Who we are"
+msgstr "Quienes somos"
+
+#: about/templates/about/about.html:47
+msgid "Meet the members"
+msgstr "Conoce a los miembros"
 
 #: coderhouse_project/settings.py:170
 msgid "English"
@@ -75,6 +83,60 @@ msgstr ""
 "\n"
 "Guardar"
 
+#: home/templates/home/errors/403.html:112
+msgid "Looks like you don't have access to this page."
+msgstr ""
+
+#: home/templates/home/errors/403.html:113
+msgid "Please check with the site admin if you believe this is a mistake."
+msgstr ""
+
+#: home/templates/home/errors/403.html:114
+msgid "Return to Homepage"
+msgstr ""
+
+#: home/templates/home/errors/403.html:115
+msgid "Return to User Blogs."
+msgstr ""
+
+#: home/templates/home/footer.html:12
+msgid ""
+"\n"
+"            Register for free\n"
+"            "
+msgstr ""
+"\n"
+"Registrate gratis"
+
+#: home/templates/home/footer.html:17
+msgid ""
+"\n"
+"              Register!  \n"
+"              "
+msgstr ""
+"\n"
+"¡Registrate!"
+
+#: home/templates/home/home.html:23
+msgid "Search this Blog"
+msgstr "Buscar en este Blog"
+
+#: home/templates/home/home.html:59
+msgid " Posted by "
+msgstr "publicado por"
+
+#: home/templates/home/home.html:61
+msgid " on "
+msgstr "en"
+
+#: home/templates/home/home.html:78
+msgid "PREV"
+msgstr "ANTERIOR"
+
+#: home/templates/home/home.html:81
+msgid "NEXT"
+msgstr "SIGUIENTE"
+
 #: home/templates/home/navbar.html:20
 msgid "Home"
 msgstr "Inicio"
@@ -91,21 +153,41 @@ msgstr "Acerca"
 msgid "Contact"
 msgstr "Contácto"
 
-#: home/templates/home/navbar.html:44
+#: home/templates/home/navbar.html:26
+msgid "Language"
+msgstr "Idioma"
+
+#: home/templates/home/navbar.html:59
 msgid "Your are logged in as"
 msgstr "Estás registrado como"
 
-#: home/templates/home/navbar.html:48 home/templates/home/navbar.html:60
+#: home/templates/home/navbar.html:63 home/templates/home/navbar.html:76
 msgid "Sign out"
 msgstr "Desconectar"
 
-#: home/templates/home/navbar.html:62
+#: home/templates/home/navbar.html:67
+msgid "Sign in"
+msgstr "Iniciar sesión"
+
+#: home/templates/home/navbar.html:78
 msgid "Are you sure you want to log-off?"
 msgstr "¿Está seguro de que desea cerrar la sesión?"
 
-#: home/templates/home/navbar.html:76
+#: home/templates/home/navbar.html:92
 msgid "Register"
 msgstr "Registrate"
+
+#: home/templates/home/navbar.html:120
+msgid "My Profile"
+msgstr "Mi perfil"
+
+#: home/templates/home/navbar.html:123
+msgid "My Blogs"
+msgstr "Mis Blogs"
+
+#: home/templates/home/navbar.html:127
+msgid "Manage Users"
+msgstr "Administrar usuarios"
 
 #~ msgid "Logout"
 #~ msgstr "Cerrar sesión"
