@@ -2,6 +2,7 @@
 {% load static %}
 {% load humanize %}
 {% load widget_tweaks %}
+{% load i18n %}
 {% block header %}
 <!-- Page Header-->
 <header class="masthead" style='background-image: url("{% static 'home/assets/img/home-bg.jpg' %}")'>
@@ -9,8 +10,14 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1>{{ header }}</h1>
-                    <span class="subheading">{{ subheader }}</span>
+                <h1>
+                    {% blocktrans with obj.header as h1 %} {{ h1 }} {% endblocktrans %}
+                </h1>
+                <span class="subheading">
+                    {% blocktrans %}
+                        {{ subheader }}
+                    {% endblocktrans %}
+                </span>
                 </div>
             </div>
         </div>
@@ -19,8 +26,9 @@
 {% endblock header %}
 
 {% block content %}
+
     <div class="container">
-        <center><h1>Contact Us</h1></center>
+        <center><h1>{% trans 'Contact us' %}</h1></center>
             <form method="post">
                 {% csrf_token %}
 
@@ -42,7 +50,10 @@
 
                 <div class="form-group">
                 <button type="submit" class="btn btn-success">
-                    <span class="glyphicon glyphicon-ok"></span> Save
+                    <span class="glyphicon glyphicon-ok"></span> 
+                    {% blocktrans %}
+                    Save
+                    {% endblocktrans %}
                 </button>
                 <a href="" class="btn btn-default">Cancel</a>
                 </div>

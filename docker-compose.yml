@@ -32,7 +32,7 @@ services:
           - ./data/misc/django_init.sql:/docker-entrypoint-initdb.d/1-django-init.sql
   pgadmin:
       container_name: pgadmin_container_coder
-      image: dpage/pgadmin4:5.2
+      image: dpage/pgadmin4:6.11
       restart: always
       environment:
           PGADMIN_DEFAULT_EMAIL: admin@example.com

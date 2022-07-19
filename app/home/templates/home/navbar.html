@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!-- Navigation-->
 {% csrf_token %}
 
@@ -16,10 +17,22 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <!-- Nav -->
         <div class="navbar-nav mx-lg-auto">
-          <a class="nav-item nav-link active" href="{% url 'blog:home' %}" aria-current="page">Home</a>
-          <a class="nav-item nav-link" href="{% url 'blog:home' %}">Blog</a>
-          <a class="nav-item nav-link" href="{% url 'about:about' %}">About</a>
-          <a class="nav-item nav-link" href="{% url 'contact:contact' %}">Contact</a>
+          <a class="nav-item nav-link active" href="{% url 'blog:home' %}" aria-current="page">{% blocktrans %}Home{% endblocktrans %}</a>
+          <a class="nav-item nav-link" href="{% url 'blog:home' %}">{% blocktrans %}Blog{% endblocktrans %}</a>
+          <a class="nav-item nav-link" href="{% url 'about:about' %}">{% blocktrans %}About{% endblocktrans %}</a>
+          <a class="nav-item nav-link" href="{% url 'contact:contact' %}">{% blocktrans %}Contact{% endblocktrans %}</a>
+          <div class="dropdown" style="display: inline-block;">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink78" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink78">
+                    {% for language in languages %}
+                        <a class="dropdown-item" href="/{{ language.code }}/"
+                          {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
+                          <span class="flag-icon flag-icon-us"></span> {{ language.name_local }}
+                        </a>
+                      </li>
+                    {% endfor %}              
+            </div>
+        </div>
         </div>
         <!-- Right navigation -->
 
@@ -28,10 +41,12 @@
             <div class="col-12 mb-3">
               {% if not user.is_anonymous %}
                 <span style="color:cyan;">
-                  Your are logged in as
+                  {% blocktrans %}Your are logged in as{% endblocktrans %}
                   <strong>{{ user }}</strong>
                 </span>
-                <button class="btn btn-danger btn-lg" data-toggle="modal" data-target=".bs-example-modal-sm">Sign out</button>
+                <button class="btn btn-danger btn-lg" data-toggle="modal" data-target=".bs-example-modal-sm">
+                  {% blocktrans %}Sign out{% endblocktrans %}
+                </button>
                 {% else %}
                 <a class="btn btn-primary btn-lg" href="{% url 'user:login' %}" role="button">Sign in</a>
                 
@@ -42,8 +57,10 @@
         <div class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-dialog modal-sm">
             <div class="modal-content">
-              <div class="modal-header"><h4>Logout <i class="fa fa-lock"></i></h4></div>
-              <div class="modal-body"><i class="fa fa-question-circle"></i> Are you sure you want to log-off?</div>
+              <div class="modal-header"><h4>{% blocktrans %}Sign out{% endblocktrans %}<i class="fa fa-lock"></i></h4></div>
+              <div class="modal-body"><i class="fa fa-question-circle"></i> 
+                {% blocktrans %}Are you sure you want to log-off?{% endblocktrans %}
+              </div>
               <div class="modal-footer">
                 <a class="btn btn-danger btn-lg" href="{% url 'user:logout' %}" role="button">Logout</a>
               </div>
@@ -55,7 +72,9 @@
         <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
           <div class="row">
             <div class="col-12 mb-3">
-              <a class="btn btn-secondary btn-lg" href="{% url 'user:user-register' %}" role="button">Register</a><br>
+              <a class="btn btn-secondary btn-lg" href="{% url 'user:user-register' %}" role="button">
+                {% blocktrans %}Register{% endblocktrans %}
+              </a><br>
             </div>
           </div>
         </div>

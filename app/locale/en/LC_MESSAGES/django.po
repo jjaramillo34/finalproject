@@ -9,48 +9,48 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-18 21:53-0400\n"
-"PO-Revision-Date: 2022-07-18 21:53-0400\n"
+"PO-Revision-Date: 2022-07-15 14:35-0400\n"
 "Last-Translator:   <admin@xyz.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
 #: coderhouse_project/settings.py:170
 msgid "English"
-msgstr "Anglais"
+msgstr ""
 
 #: coderhouse_project/settings.py:171
 msgid "French"
-msgstr "Français"
+msgstr ""
 
 #: coderhouse_project/settings.py:172
 msgid "Spanish"
-msgstr "Espagnol"
+msgstr ""
 
 #: coderhouse_project/urls.py:24
 msgid "admin/"
-msgstr "admin/"
+msgstr ""
 
 #: contact/forms.py:7
 msgid "E-Mail:"
-msgstr "Courrier électronique"
+msgstr ""
 
 #: contact/forms.py:8
 msgid "Subject:"
-msgstr "Sujet"
+msgstr ""
 
 #: contact/forms.py:9
 msgid "Message:"
-msgstr "Message"
+msgstr ""
 
 #: contact/templates/contact/contact.html:14
 #, python-format
 msgid " %(h1)s "
-msgstr "Nous contacter"
+msgstr ""
 
 #: contact/templates/contact/contact.html:17
 #, python-format
@@ -59,12 +59,10 @@ msgid ""
 "                        %(subheader)s\n"
 "                    "
 msgstr ""
-"\n"
-"Envoyez-nous un message"
 
 #: contact/templates/contact/contact.html:31
 msgid "Contact us"
-msgstr "Nous contacter"
+msgstr ""
 
 #: contact/templates/contact/contact.html:54
 msgid ""
@@ -72,64 +70,35 @@ msgid ""
 "                    Save\n"
 "                    "
 msgstr ""
-"\n"
-"Sauvez"
 
 #: home/templates/home/navbar.html:20
 msgid "Home"
-msgstr "Accueil"
+msgstr ""
 
 #: home/templates/home/navbar.html:21
 msgid "Blog"
-msgstr "Blog"
+msgstr ""
 
 #: home/templates/home/navbar.html:22
 msgid "About"
-msgstr "À propos de"
+msgstr ""
 
 #: home/templates/home/navbar.html:23
 msgid "Contact"
-msgstr "Contact"
+msgstr ""
 
 #: home/templates/home/navbar.html:44
 msgid "Your are logged in as"
-msgstr "Vous êtes connecté en tant que"
+msgstr ""
 
 #: home/templates/home/navbar.html:48 home/templates/home/navbar.html:60
 msgid "Sign out"
-msgstr "Se déconnecter"
+msgstr ""
 
 #: home/templates/home/navbar.html:62
 msgid "Are you sure you want to log-off?"
-msgstr "Vous êtes sûr de vouloir vous déconnecter ?"
+msgstr ""
 
 #: home/templates/home/navbar.html:76
 msgid "Register"
-msgstr "Registre"
-
-#~ msgid "Logout"
-#~ msgstr "Déconnexion"
-
-#, python-format
-#~ msgid ""
-#~ "\n"
-#~ "                            %(header)s\n"
-#~ "                    "
-#~ msgstr ""
-#~ "\n"
-#~ "%(header)s"
-
-#~ msgid "Hi!"
-#~ msgstr "Salut !"
-
-#~ msgid "Hi, welcome!"
-#~ msgstr "Bonjour, bienvenue !"
-
-#~ msgid ""
-#~ "\n"
-#~ "    Hi, how are you?\n"
-#~ "    Take a look this!\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Bonjour, comment allez-vous ?\n"
-#~ "Regarde ça !\n"
+msgstr ""

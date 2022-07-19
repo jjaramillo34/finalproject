@@ -1,0 +1,16 @@
+# remove all containers
+docker-compose down -rmi all
+
+# build containers and attach pgadmin and djago web
+docker-compose up -d --build
+
+# make django migrations
+docker-compose exec web python manage.py makemigrations --noinput
+docker-compose exec web python manage.py migrate --noinput
+
+# load data to database   
+cat data/data.json | sudo docker exec -i django-coderhouse-project-web-1 python manage.py loaddata --format=json
+
+# load messages
+docker-compose exec web django-admin compilemessages --ignore=env
+

@@ -11,11 +11,12 @@ class About(TranslatableModel):
         return self.team1
 
 class Members(TranslatableModel):
+    name = models.CharField(max_length=50, default='/'),
+    github = models.CharField(max_length=250, default='www.github.com')
+    img = models.ImageField(upload_to='teams')
     translations = TranslatedFields(
-        name = models.CharField(max_length=50, default='/'),
-        github = models.CharField(max_length=250, default='www.github.com'),
         profession = models.CharField(max_length=250, default='/'),
-        img = models.ImageField(upload_to='teams'),
+        
     )
     
     def __str__(self):

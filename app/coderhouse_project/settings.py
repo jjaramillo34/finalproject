@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'social_django',
     'rosetta',  # NEW
     'parler',  # NEW
+    'hitcount',
 ]
 
 MIDDLEWARE = [
